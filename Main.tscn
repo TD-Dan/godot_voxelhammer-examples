@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://8kocrjjy1v6e"]
+[gd_scene load_steps=8 format=3 uid="uid://dptcr6gmkv0dh"]
 
-[ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://MainEnvironment.tres" id="1_543cc"]
-[ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://CameraAttributesPhysical.tres" id="1_fk8i1"]
+[ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://res/MainEnvironment.tres" id="1_543cc"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://res/CameraAttributesPhysical.tres" id="1_fk8i1"]
 [ext_resource type="Script" path="res://scripts/LabelFPS.gd" id="3_hi8b3"]
 [ext_resource type="Script" path="res://addons/godot-free-look-camera/free_look_camera.gd" id="3_mvgpr"]
 [ext_resource type="Script" path="res://scripts/VSyncButton.gd" id="4_prman"]

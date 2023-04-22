@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="Godot Voxelhammer-examples"
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+VoxelHammer="*res://addons/godot_voxelhammer/VoxelHammer.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_voxelhammer/plugin.cfg")

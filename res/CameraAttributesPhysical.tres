@@ -1,0 +1,6 @@
+[gd_resource type="CameraAttributesPhysical" format=3 uid="uid://bplg8oft2irm"]
+
+[resource]
+auto_exposure_enabled = true
+frustum_focal_length = 20.0
+auto_exposure_min_exposure_value = -4.0
