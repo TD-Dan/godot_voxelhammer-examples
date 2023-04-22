@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://8kocrjjy1v6e"]
+
+[ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://MainEnvironment.tres" id="1_543cc"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://CameraAttributesPhysical.tres" id="1_fk8i1"]
+[ext_resource type="Script" path="res://scripts/LabelFPS.gd" id="3_hi8b3"]
+[ext_resource type="Script" path="res://addons/godot-free-look-camera/free_look_camera.gd" id="3_mvgpr"]
+[ext_resource type="Script" path="res://scripts/VSyncButton.gd" id="4_prman"]
+[ext_resource type="PackedScene" uid="uid://d0tipk1ci2kim" path="res://main_menu.tscn" id="12_o55m4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ru7lw"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_543cc")
+camera_attributes = ExtResource("1_fk8i1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.660146, -0.618191, 0.426669, -1.92256e-08, 0.568031, 0.823007, -0.751137, -0.543305, 0.374984, 5.85649, 6.37822, 4.34296)
+light_color = Color(1, 1, 0.972549, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.222, 4.8, 9.4)
+light_color = Color(0.67451, 0.47451, 0, 1)
+light_energy = 0.0
+light_size = 0.2
+shadow_enabled = true
+omni_range = 10.5734
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["LookAtTarget", "player"]]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 9.48779)
+environment = ExtResource("1_543cc")
+attributes = ExtResource("1_fk8i1")
+current = true
+script = ExtResource("3_mvgpr")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/CharacterBody3D"]
+shape = SubResource("SphereShape3D_ru7lw")
+
+[node name="TestWorld" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MainMenu" parent="MarginContainer/VBoxContainer" instance=ExtResource("12_o55m4")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "FPS avg/min"
+
+[node name="LabelFPS" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "   0 /    0"
+script = ExtResource("3_hi8b3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Vsync:"
+
+[node name="VSyncButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+flat = true
+script = ExtResource("4_prman")
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VSyncButton" to="MarginContainer/VBoxContainer/HBoxContainer/VSyncButton" method="_on_item_selected"]
