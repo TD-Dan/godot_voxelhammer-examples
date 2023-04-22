@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://cipsi5u20ocsr"]
 
 [ext_resource type="Material" uid="uid://cy3iyc1vgtogu" path="res://materials/Default_world.tres" id="1_8nx6q"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Node3D/VoxelBody3D.gd" id="1_eg5wj"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Node3D/VoxelInstance3D.gd" id="2_loswh"]
-[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/TallDwarf/VoxelHammer/res/default_voxel_configuration.tres" id="3_0hxvj"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Resource/VoxelData.gd" id="4_io6ot"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelBody3D.gd" id="1_eg5wj"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="2_loswh"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="3_0hxvj"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="4_io6ot"]
 [ext_resource type="Material" uid="uid://bfpv45gqj8nvl" path="res://materials/Default_object.tres" id="6_adn0y"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tie6s"]

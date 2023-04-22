@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjxm6gts8yfa1"]
 
-[ext_resource type="PackedScene" uid="uid://b5fa6m6t14mp" path="res://addons/TallDwarf/VoxelHammer/classes/Node3D/VoxelInstance3D.tscn" id="1_rg60v"]
-[ext_resource type="Material" uid="uid://0gykgi4mmdo6" path="res://addons/TallDwarf/VoxelHammer/res/mat_error.tres" id="2_2oxyp"]
-[ext_resource type="Material" uid="uid://qdfs2qt8trs" path="res://addons/TallDwarf/VoxelHammer/res/mat_uvtest.tres" id="3_kmjrw"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Resource/VoxelData.gd" id="4_01wob"]
-[ext_resource type="Material" uid="uid://diivkrqknfga3" path="res://addons/TallDwarf/VoxelHammer/res/mat_benchmark.tres" id="4_i6whn"]
-[ext_resource type="Material" uid="uid://jfdghx0ou4ar" path="res://addons/TallDwarf/VoxelHammer/res/mat_white.tres" id="5_xwa67"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Resource/VoxelConfiguration.gd" id="6_ojcna"]
+[ext_resource type="PackedScene" uid="uid://b5fa6m6t14mp" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.tscn" id="1_rg60v"]
+[ext_resource type="Material" uid="uid://0gykgi4mmdo6" path="res://addons/godot-voxelhammer/res/mat_error.tres" id="2_2oxyp"]
+[ext_resource type="Material" uid="uid://qdfs2qt8trs" path="res://addons/godot-voxelhammer/res/mat_uvtest.tres" id="3_kmjrw"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="4_01wob"]
+[ext_resource type="Material" uid="uid://diivkrqknfga3" path="res://addons/godot-voxelhammer/res/mat_benchmark.tres" id="4_i6whn"]
+[ext_resource type="Material" uid="uid://jfdghx0ou4ar" path="res://addons/godot-voxelhammer/res/mat_white.tres" id="5_xwa67"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelConfiguration.gd" id="6_ojcna"]
 
 [sub_resource type="Resource" id="Resource_fm60e"]
 script = ExtResource("6_ojcna")

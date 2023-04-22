@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="VoxelPaintStack" load_steps=9 format=3 uid="uid://b1soikmlwutjf"]
 
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/PaintOp/PaintOpNoise.gd" id="1_iutm8"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/PaintOp/PaintOpGradient.gd" id="2_tlvmf"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/PaintOp/PaintOpPlane.gd" id="3_l1o0h"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/PaintOp/VoxelPaintStack.gd" id="4_g5y32"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpNoise.gd" id="1_iutm8"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpGradient.gd" id="2_tlvmf"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpPlane.gd" id="3_l1o0h"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/VoxelPaintStack.gd" id="4_g5y32"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5nj68"]
 seed = 74

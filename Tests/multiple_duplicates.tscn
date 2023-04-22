@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlxih8x6o2edk"]
 
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Node3D/VoxelInstance3D.gd" id="1_le5cq"]
-[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/TallDwarf/VoxelHammer/res/default_voxel_configuration.tres" id="2_uvv4s"]
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Resource/VoxelData.gd" id="3_yduuk"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="1_le5cq"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_uvv4s"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_yduuk"]
 
 [sub_resource type="Resource" id="Resource_jmtwu"]
 script = ExtResource("3_yduuk")

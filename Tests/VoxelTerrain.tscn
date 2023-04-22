@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch0hyf2y1fc45"]
 
-[ext_resource type="Script" path="res://addons/TallDwarf/VoxelHammer/classes/Node3D/VoxelTerrain3D.gd" id="1_fg8wr"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain3D.gd" id="1_fg8wr"]
 
 [node name="Test_VoxelTerrain" type="Node3D"]
 
