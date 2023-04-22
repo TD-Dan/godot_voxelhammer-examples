@@ -1,6 +1,6 @@
-[submodule "addons/godot_voxelhammer"]
-	path = addons/godot_voxelhammer
-	url = git@github.com:TD-Dan/godot_voxelhammer.git
+[submodule "addons/godot-voxelhammer"]
+	path = addons/godot-voxelhammer
+	url = git@github.com:TD-Dan/godot-voxelhammer.git
 [submodule "addons/godot-free-look-camera"]
 	path = addons/godot-free-look-camera
 	url = git@github.com:TD-Dan/godot-free-look-camera.git
