@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5o8cdiy2b5sc"]
 
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="1_7bb47"]
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/Tests/Test_live_instances.gd" id="1_rx1yp"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/Tests/live_instances.gd" id="1_rx1yp"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_rx1yp")

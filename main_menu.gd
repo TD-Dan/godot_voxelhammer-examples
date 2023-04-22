@@ -7,18 +7,7 @@ class SceneEntry:
 		name = n
 		scene = s
 
-var scenes  = [
-	SceneEntry.new("Voxel", load("res://Tests/single_VoxelInstance3D.tscn")),
-	SceneEntry.new("Voxels", load("res://Tests/multiple_instances.tscn")),
-	SceneEntry.new("Voxel meshing", load("res://Tests/meshing.tscn")),
-	SceneEntry.new("Voxel live instances", load("res://Tests/live_instances.tscn")),
-	SceneEntry.new("Voxel multiple duplicates", load("res://Tests/multiple_duplicates.tscn")),
-	SceneEntry.new("VoxelPaint", load("res://Tests/VoxelPaint.tscn")),
-	SceneEntry.new("VoxelPaintStack", load("res://Tests/PaintStack.tscn")),
-	SceneEntry.new("VoxelPaintStack Global", load("res://Tests/PaintStack_global.tscn")),
-	SceneEntry.new("Voxel Scaling", load("res://Tests/voxel_scale.tscn")),
-	SceneEntry.new("VoxelTerrain", load("res://Tests/VoxelTerrain.tscn"))
-]
+var scenes  = []
 
 @onready var scene_menu = $Scene
 var test_world : Node3D
@@ -34,6 +23,19 @@ func _ready():
 		test_world = Node3D.new()
 		get_parent().add_child.call_deferred(test_world)
 	
+	# autodiscover test scenes
+	var dir = DirAccess.open("res://Tests")
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".tscn"):
+				scenes.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Tests/%s" % filename) ))
+			filename = dir.get_next()
+	
+			
+	
+	# add scenes to main menu
 	for entry in scenes:
 		print(entry.name)
 		scene_menu.add_item(entry.name)

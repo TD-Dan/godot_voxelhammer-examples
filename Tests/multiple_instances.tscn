@@ -1,6 +1,5 @@
 [gd_scene load_steps=21 format=3 uid="uid://yuxo6btsfjb5"]
 
-[ext_resource type="Material" uid="uid://cy3iyc1vgtogu" path="res://materials/Default_world.tres" id="1_eh6p3"]
 [ext_resource type="PackedScene" uid="uid://b5fa6m6t14mp" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.tscn" id="2_f7wxu"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_ldals"]
 [ext_resource type="Material" uid="uid://0gykgi4mmdo6" path="res://addons/godot-voxelhammer/res/mat_error.tres" id="4_am8li"]
@@ -8,10 +7,8 @@
 [ext_resource type="Material" uid="uid://diivkrqknfga3" path="res://addons/godot-voxelhammer/res/mat_benchmark.tres" id="6_dpy4i"]
 [ext_resource type="Material" uid="uid://jfdghx0ou4ar" path="res://addons/godot-voxelhammer/res/mat_white.tres" id="7_oyxrk"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelConfiguration.gd" id="8_jvse2"]
-[ext_resource type="Material" uid="uid://bfpv45gqj8nvl" path="res://materials/Default_object.tres" id="9_gmevr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f7hbq"]
-material = ExtResource("1_eh6p3")
 size = Vector2(16, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w4xxq"]
@@ -63,7 +60,6 @@ friction = 0.14
 bounce = 0.8
 
 [sub_resource type="SphereMesh" id="SphereMesh_vfbw8"]
-material = ExtResource("9_gmevr")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8plca"]
 
