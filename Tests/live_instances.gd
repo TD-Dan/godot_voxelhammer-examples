@@ -34,7 +34,7 @@ func _ready():
 	performance_voxels.fill(0)
 
 var elapsed = 0.0
-var frame_limit = 1/120
+var frame_limit = 1.0/120.0
 var frame_limit_counter = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
