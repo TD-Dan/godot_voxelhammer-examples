@@ -18,7 +18,7 @@ cascade_smallest_size = 16
 chunk_cascades = 1
 
 [node name="TestTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88064, 7.01668, 15.1669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88064, 7.01668, 1.1669)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)

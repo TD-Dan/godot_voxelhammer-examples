@@ -13,15 +13,6 @@ var performance_voxels = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for item in VoxelConfiguration.MESH_MODE.keys():
-		%OptionButtonMesh.add_item(item)
-	
-	for item in VoxelConfiguration.THREAD_MODE.keys():
-		%OptionButtonThread.add_item(item)
-	
-	%OptionButtonMesh.selected = VoxelHammer.default_configuration.mesh_mode
-	%OptionButtonThread.selected = VoxelHammer.default_configuration.thread_mode
-	
 	n1.connect("data_changed", _on_mesh_updated.bind(1))
 	n2.connect("data_changed", _on_mesh_updated.bind(2))
 	n3.connect("data_changed", _on_mesh_updated.bind(3))
@@ -55,13 +46,6 @@ func _process(delta):
 		
 		n5.push_voxel_operation(VoxelOpSphere.new(2,Vector3(n5.voxel_data.size)/2.0+Vector3(0.1,0.2,0.3), n5.voxel_data.size.x/2*phase, true))
 
-
-func _on_option_button_mesh_item_selected(index):
-	VoxelHammer.default_configuration.mesh_mode = index
-
-
-func _on_option_button_thread_item_selected(index):
-	VoxelHammer.default_configuration.thread_mode = index
 
 func _on_mesh_updated(what,who):
 	if what == "mesh":

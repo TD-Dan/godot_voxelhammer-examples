@@ -1,13 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dptcr6gmkv0dh"]
+[gd_scene load_steps=12 format=3 uid="uid://dptcr6gmkv0dh"]
 
 [ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://res/MainEnvironment.tres" id="1_543cc"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://res/CameraAttributesPhysical.tres" id="1_fk8i1"]
 [ext_resource type="Script" path="res://scripts/LabelFPS.gd" id="3_hi8b3"]
 [ext_resource type="Script" path="res://addons/godot-free-look-camera/free_look_camera.gd" id="3_mvgpr"]
 [ext_resource type="Script" path="res://scripts/VSyncButton.gd" id="4_prman"]
+[ext_resource type="Texture2D" uid="uid://dnpesvmv0c2ag" path="res://addons/godot-voxelhammer/res/icon_vh.png" id="5_rvvcp"]
+[ext_resource type="Script" path="res://ui/SelectValue.gd" id="6_jq2oo"]
+[ext_resource type="Script" path="res://ui/ToggleValue.gd" id="6_p1r1t"]
 [ext_resource type="PackedScene" uid="uid://d0tipk1ci2kim" path="res://main_menu.tscn" id="12_o55m4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ru7lw"]
+
+[sub_resource type="Theme" id="Theme_g4y43"]
+Label/colors/font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [node name="World" type="Node3D"]
 
@@ -50,45 +56,97 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_g4y43")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsContainer" type="HFlowContainer" parent="MarginContainer/HSplitContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "Vsync:"
+
+[node name="VSyncButton" type="OptionButton" parent="MarginContainer/HSplitContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+flat = true
+script = ExtResource("4_prman")
+
+[node name="DebugGizmos" type="Button" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Show debug extras"
+script = ExtResource("6_p1r1t")
+custom_path = "/root/VoxelHammer"
+bool_variable_name = "show_debug_gizmos"
+
+[node name="LabelMesh" type="Label" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+text = "Meshing mode:"
+
+[node name="OptionButtonMesh" type="OptionButton" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+toggle_mode = false
+flat = true
+script = ExtResource("6_jq2oo")
+custom_path = "/root/VoxelHammer"
+enum_variable_name = "default_configuration.mesh_mode"
+enum_class = "VoxelConfiguration.MESH_MODE"
+
+[node name="LabelThread" type="Label" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+text = "Threading mode:"
+
+[node name="OptionButtonThread" type="OptionButton" parent="MarginContainer/HSplitContainer/SettingsContainer"]
+layout_mode = 2
+toggle_mode = false
+flat = true
+script = ExtResource("6_jq2oo")
+custom_path = "/root/VoxelHammer"
+enum_variable_name = "default_configuration.thread_mode"
+enum_class = "VoxelConfiguration.THREAD_MODE"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="MainMenu" parent="MarginContainer/VBoxContainer" instance=ExtResource("12_o55m4")]
+[node name="MainMenu" parent="MarginContainer/HSplitContainer/VBoxContainer2" instance=ExtResource("12_o55m4")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+text = "Settings"
+icon = ExtResource("5_rvvcp")
+script = ExtResource("6_p1r1t")
+target_node = NodePath("../../SettingsContainer")
+bool_variable_name = "visible"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HSplitContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "FPS avg/min"
 
-[node name="LabelFPS" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LabelFPS" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "   0 /    0"
 script = ExtResource("3_hi8b3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Vsync:"
-
-[node name="VSyncButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-flat = true
-script = ExtResource("4_prman")
-
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VSyncButton" to="MarginContainer/VBoxContainer/HBoxContainer/VSyncButton" method="_on_item_selected"]
+[connection signal="item_selected" from="MarginContainer/HSplitContainer/SettingsContainer/HBoxContainer/VSyncButton" to="MarginContainer/HSplitContainer/SettingsContainer/HBoxContainer/VSyncButton" method="_on_item_selected"]

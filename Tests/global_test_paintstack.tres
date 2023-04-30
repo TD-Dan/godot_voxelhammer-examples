@@ -44,4 +44,5 @@ active = true
 
 [resource]
 script = ExtResource("4_g5y32")
+use_global_coordinates = true
 operation_stack = [SubResource("Resource_yabuf"), SubResource("Resource_i8w08"), SubResource("Resource_64unf")]
