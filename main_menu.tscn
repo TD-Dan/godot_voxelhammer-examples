@@ -8,8 +8,13 @@ offset_bottom = 39.0
 size_flags_horizontal = 3
 script = ExtResource("1_t0krg")
 
-[node name="Scene" type="PopupMenu" parent="."]
+[node name="Examples" type="PopupMenu" parent="."]
 title = "Scene"
 size = Vector2i(115, 100)
 
-[connection signal="index_pressed" from="Scene" to="." method="_on_scene_index_pressed"]
+[node name="Tests" type="PopupMenu" parent="."]
+title = "Scene"
+size = Vector2i(115, 100)
+
+[connection signal="index_pressed" from="Examples" to="." method="_on_examples_index_pressed"]
+[connection signal="index_pressed" from="Tests" to="." method="_on_scene_index_pressed"]

@@ -7,9 +7,11 @@ class SceneEntry:
 		name = n
 		scene = s
 
-var scenes  = []
+var examples  = []
+var tests  = []
 
-@onready var scene_menu = $Scene
+@onready var examples_menu = $Examples
+@onready var tests_menu = $Tests
 var test_world : Node3D
 
 # Called when the node enters the scene tree for the first time.
@@ -23,22 +25,35 @@ func _ready():
 		test_world = Node3D.new()
 		get_parent().add_child.call_deferred(test_world)
 	
-	# autodiscover test scenes
-	var dir = DirAccess.open("res://Tests")
+	# autodiscover example scenes
+	var dir = DirAccess.open("res://Examples")
 	if dir:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while filename != "":
 			if filename.ends_with(".tscn"):
-				scenes.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Tests/%s" % filename) ))
+				examples.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Examples/%s" % filename) ))
+			filename = dir.get_next()
+	
+	# autodiscover test scenes
+	dir = DirAccess.open("res://Tests")
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".tscn"):
+				tests.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Tests/%s" % filename) ))
 			filename = dir.get_next()
 	
 			
 	
-	# add scenes to main menu
-	for entry in scenes:
-		print(entry.name)
-		scene_menu.add_item(entry.name)
+	# add to main menu
+	for entry in examples:
+		#print(entry.name)
+		examples_menu.add_item(entry.name)
+	for entry in tests:
+		#print(entry.name)
+		tests_menu.add_item(entry.name)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,6 +65,11 @@ func _on_scene_index_pressed(index):
 	# clear previous scene
 	for n in test_world.get_children():
 		n.queue_free()
-	test_world.add_child(scenes[index].scene.instantiate())
-	
+	test_world.add_child(tests[index].scene.instantiate())
 
+
+func _on_examples_index_pressed(index):
+	# clear previous scene
+	for n in test_world.get_children():
+		n.queue_free()
+	test_world.add_child(examples[index].scene.instantiate())
