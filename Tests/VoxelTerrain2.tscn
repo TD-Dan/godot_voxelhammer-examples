@@ -8,6 +8,7 @@
 [node name="VoxelTerrain3D" type="Node3D" parent="."]
 script = ExtResource("1_1vua0")
 configuration = ExtResource("2_h3q72")
-largest_voxel = 128
+largest_voxel = 4
+cascade_biggest_size = 128
 chunk_cascades = 3
 total_chunks = 24

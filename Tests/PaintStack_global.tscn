@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b85x4t7ja5bmw"]
+[gd_scene load_steps=12 format=3 uid="uid://b85x4t7ja5bmw"]
 
-[ext_resource type="PackedScene" uid="uid://b5fa6m6t14mp" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.tscn" id="1_sodpc"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="1_fcrjc"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_4rgq3"]
 [ext_resource type="Resource" uid="uid://b1soikmlwutjf" path="res://Tests/global_test_paintstack.tres" id="5_6om1p"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="6_anolg"]
 
@@ -41,47 +42,61 @@ data = PackedInt64Array(4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
 
 [node name="TestPaintStackGlobal" type="Node3D"]
 
-[node name="VoxelInstance3D" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_abwiq")
 paint_stack = ExtResource("5_6om1p")
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D2" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 8, -96)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_m2gca")
 paint_stack = ExtResource("5_6om1p")
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D3" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -32)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_m28d0")
 paint_stack = ExtResource("5_6om1p")
 mesh_scale = 0.5
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D4" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 15, -32)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_krr3g")
 paint_stack = ExtResource("5_6om1p")
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D5" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D5" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, -160)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_m8n1w")
 paint_stack = ExtResource("5_6om1p")
 mesh_scale = 2.0
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D6" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D6" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 0, -288)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_71l5w")
 paint_stack = ExtResource("5_6om1p")
 mesh_scale = 4.0
 metadata/_edit_group_ = true
 
-[node name="VoxelInstance3D7" parent="." instance=ExtResource("1_sodpc")]
+[node name="VoxelInstance3D7" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137, 0, -544)
+script = ExtResource("1_fcrjc")
+configuration = ExtResource("2_4rgq3")
 voxel_data = SubResource("Resource_tjnm0")
 paint_stack = ExtResource("5_6om1p")
 mesh_scale = 8.0

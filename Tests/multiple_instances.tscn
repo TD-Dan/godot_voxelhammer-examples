@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://yuxo6btsfjb5"]
+[gd_scene load_steps=14 format=3 uid="uid://yuxo6btsfjb5"]
 
-[ext_resource type="PackedScene" uid="uid://b5fa6m6t14mp" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.tscn" id="2_f7wxu"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="1_mjvox"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_1d7y1"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_ldals"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f7hbq"]
@@ -9,31 +10,31 @@ size = Vector2(16, 8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w4xxq"]
 size = Vector3(16, 0.01, 8)
 
-[sub_resource type="Resource" id="Resource_tbgjh"]
+[sub_resource type="Resource" id="Resource_mvo8u"]
 resource_local_to_scene = true
 script = ExtResource("3_ldals")
 size = Vector3i(4, 4, 5)
 data = PackedInt64Array(4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4)
 
-[sub_resource type="Resource" id="Resource_4mgxq"]
+[sub_resource type="Resource" id="Resource_f34cc"]
 resource_local_to_scene = true
 script = ExtResource("3_ldals")
 size = Vector3i(3, 3, 4)
 data = PackedInt64Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="Resource" id="Resource_3ytln"]
-resource_local_to_scene = true
-script = ExtResource("3_ldals")
-size = Vector3i(1, 1, 1)
-data = PackedInt64Array(2)
-
-[sub_resource type="Resource" id="Resource_l838g"]
+[sub_resource type="Resource" id="Resource_ho0of"]
 resource_local_to_scene = true
 script = ExtResource("3_ldals")
 size = Vector3i(5, 3, 2)
 data = PackedInt64Array(2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 2)
 
-[sub_resource type="Resource" id="Resource_hhaiw"]
+[sub_resource type="Resource" id="Resource_h8ul2"]
+resource_local_to_scene = true
+script = ExtResource("3_ldals")
+size = Vector3i(1, 1, 1)
+data = PackedInt64Array(2)
+
+[sub_resource type="Resource" id="Resource_rtmtu"]
 resource_local_to_scene = true
 script = ExtResource("3_ldals")
 size = Vector3i(4, 4, 4)
@@ -75,31 +76,41 @@ shape = SubResource("BoxShape3D_w4xxq")
 [node name="UV_COLTest" type="StaticBody3D" parent="Basic Tests"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
 
-[node name="VoxelInstance3D" parent="Basic Tests/UV_COLTest" instance=ExtResource("2_f7wxu")]
+[node name="VoxelInstance3D" type="Node3D" parent="Basic Tests/UV_COLTest"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.86162, 0, 0.507553)
-voxel_data = SubResource("Resource_tbgjh")
+script = ExtResource("1_mjvox")
+configuration = ExtResource("2_1d7y1")
+voxel_data = SubResource("Resource_mvo8u")
 
-[node name="VoxelInstance3D2" parent="Basic Tests/UV_COLTest" instance=ExtResource("2_f7wxu")]
+[node name="VoxelInstance3D2" type="Node3D" parent="Basic Tests/UV_COLTest"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.19665, 4.76837e-07, -4.29504)
-voxel_data = SubResource("Resource_4mgxq")
+script = ExtResource("1_mjvox")
+configuration = ExtResource("2_1d7y1")
+voxel_data = SubResource("Resource_f34cc")
 generate_collision_sibling = 3
 
-[node name="VoxelInstance3D4" parent="Basic Tests/UV_COLTest" instance=ExtResource("2_f7wxu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38832)
-voxel_data = SubResource("Resource_3ytln")
-generate_collision_sibling = 1
-
-[node name="@VoxelInstance3D@67000" parent="Basic Tests/UV_COLTest" instance=ExtResource("2_f7wxu")]
+[node name="VoxelInstance3D3" type="Node3D" parent="Basic Tests/UV_COLTest"]
 transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 1.9, 0, -9.2)
-voxel_data = SubResource("Resource_l838g")
+script = ExtResource("1_mjvox")
+configuration = ExtResource("2_1d7y1")
+voxel_data = SubResource("Resource_ho0of")
 generate_collision_sibling = 3
+
+[node name="VoxelInstance3D4" type="Node3D" parent="Basic Tests/UV_COLTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38832)
+script = ExtResource("1_mjvox")
+configuration = ExtResource("2_1d7y1")
+voxel_data = SubResource("Resource_h8ul2")
+generate_collision_sibling = 1
 
 [node name="BigChunk" type="StaticBody3D" parent="Basic Tests"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
 
-[node name="VoxelInstance3D4" parent="Basic Tests/BigChunk" instance=ExtResource("2_f7wxu")]
+[node name="VoxelInstance3D4" type="Node3D" parent="Basic Tests/BigChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-voxel_data = SubResource("Resource_hhaiw")
+script = ExtResource("1_mjvox")
+configuration = ExtResource("2_1d7y1")
+voxel_data = SubResource("Resource_rtmtu")
 generate_collision_sibling = 3
 
 [node name="Sphere" type="RigidBody3D" parent="."]
