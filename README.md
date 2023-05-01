@@ -6,12 +6,12 @@
 
 :heavy_check_mark: VoxelInstance3D by Add Child Node (Ctrl-A)<br>
 :heavy_check_mark: VoxelInstance3D by VoxelHammer plugin Dock<br>
-:x: VoxelBody3D by Add Child Node (Ctrl-A) -> some weird double mesh instantiation going on when loading the scene<br>
-:x: VoxelBody3D by VoxelHammer plugin Dock -> some weird double mesh instantiation going on when loading the scene
+:heavy_check_mark: VoxelBody3D by Add Child Node (Ctrl-A)<br>
+:heavy_check_mark: VoxelBody3D by VoxelHammer plugin Doc
 
 - [ ] Undo functionality -> https://github.com/TD-Dan/godot-voxelhammer/issues/10
 
-passing 2 / 5
+passing 4 / 5
 
 ### Live Instances
 
