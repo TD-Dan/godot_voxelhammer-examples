@@ -11,7 +11,7 @@ var _tracking_target : Node3D
 var _target_position : Vector3
 
 
-class Eertco:
+class Octree:
 	signal leaf_created
 	signal leaf_deleted
 	var lods : Array
@@ -19,20 +19,18 @@ class Eertco:
 		lods = Array()
 		lods.resize(lod_levels)
 		lods.fill(Dictionary())
-		print(lods)
 	
 	func update(pos : Vector3):
 		var n : int = 1
 		for lod_content in lods:
-			var center_pos = pos - (Vector3(n,n,n)/2.0)
+			var center_pos = pos# - (Vector3(n,n,n)/2.0)
 			var clipped_pos : Vector3i = center_pos.snapped(Vector3(n,n,n))
-			
-			#invalidate all leafs
-			#for leaf in lod_content.values():
-			#	leaf.mesh_color = Color(1,0,0)
 			
 			var found_leaf = lod_content.get(clipped_pos)
 			if not found_leaf:
+				#for leaf in lod_content.values():
+				#	emit_signal("leaf_deleted", leaf)
+				#lod_content.clear()
 				var new_leaf = DebugMesh.new()
 				found_leaf = new_leaf
 				new_leaf.position = clipped_pos
@@ -45,7 +43,7 @@ class Eertco:
 			
 			n *= 2
 
-var tree : Eertco = Eertco.new(6)
+var tree : Octree = Octree.new(6)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,6 +55,7 @@ func _ready():
 	
 	_tracking_target = get_node_or_null(tracking_target)
 	tree.connect("leaf_created", _on_leaf_created)
+	tree.connect("leaf_deleted", _on_leaf_deleted)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,3 +69,8 @@ func _process(delta):
 func _on_leaf_created(leaf):
 	print("Added leaf: %s" % leaf.position)
 	add_child.call_deferred(leaf)
+
+
+func _on_leaf_deleted(leaf):
+	print("Removed leaf: %s" % leaf.position)
+	remove_child.call_deferred(leaf)
