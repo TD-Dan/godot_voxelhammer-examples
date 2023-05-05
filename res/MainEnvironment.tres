@@ -2,6 +2,7 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6exq7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.309804, 0.266667, 0.215686, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
 [sub_resource type="Sky" id="Sky_dfeb1"]
@@ -22,3 +23,4 @@ sdfgi_cascades = 8
 sdfgi_min_cell_size = 0.25
 glow_enabled = true
 glow_intensity = 0.5
+glow_strength = 0.5
