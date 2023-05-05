@@ -1,5 +1,13 @@
 # godot_voxelhammer-examples
 
+## Examples
+
+### Live Blobs
+
+![image](https://user-images.githubusercontent.com/37656679/236407797-eda89daa-d55b-461c-b984-d76e5bb54a62.png)
+
+Shows dynamic creation of geometry with a VoxelPaintStack.
+
 ## Tests
 
 ### Editor Instantiation
