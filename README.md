@@ -39,11 +39,11 @@ passing 4 / 6
 
 ### Meshing
 
-![image](https://user-images.githubusercontent.com/37656679/235443330-9b153515-7dda-4181-b60f-a714d44d34e7.png)
+![image](https://user-images.githubusercontent.com/37656679/236410839-4b8cd054-2900-4f8b-bd4c-9a497dcaf3c5.png)
 
 :heavy_check_mark: single material<br>
 :heavy_check_mark: multiple materials<br>
-:x: erroneus materials -> negative indices should display error material<br>
+:heavy_check_mark: erroneus materials -> negative indices should display error material<br>
 :x: transparencies -> should show internal voxels<br>
 
 passing 2 / 4
