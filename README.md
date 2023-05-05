@@ -46,5 +46,12 @@ passing 4 / 6
 :heavy_check_mark: erroneus materials -> negative indices should display error material<br>
 :x: transparencies -> should show internal voxels<br>
 
-passing 2 / 4
+passing 3 / 4
 
+### PaintStack
+
+![image](https://user-images.githubusercontent.com/37656679/236412896-96a90f7e-4ec6-4db9-9044-3d624c73f6a9.png)
+
+:heavy_check_mark: Apply paint stack in local coordinates
+
+passing 1 / 1
