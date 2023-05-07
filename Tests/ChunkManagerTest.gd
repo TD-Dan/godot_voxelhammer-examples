@@ -15,6 +15,11 @@ extends Node3D
 	set(_nv):
 		print(get_status_text())
 
+@export var open_data_folder : bool = false:
+	set(_nv):
+		OS.shell_open(ProjectSettings.globalize_path(chunkmanager.database_folder))
+
+
 var chunkmanager : ChunkManager
 
 
@@ -25,8 +30,6 @@ func _ready():
 	chunkmanager.connect("chunk_loaded", _on_chunk_loaded)
 	chunkmanager.connect("chunk_activated", _on_chunk_activated)
 	chunkmanager.get_chunk_at(Vector3i(0,0,0))
-	chunkmanager.get_chunk_at(Vector3i(0,100,0))
-	chunkmanager.get_chunk_at(Vector3i(0,200,0))
 
 
 func _on_chunk_created(chunk):
