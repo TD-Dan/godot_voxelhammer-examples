@@ -9,13 +9,15 @@ script = ExtResource("1_rix22")
 [node name="ChunkManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_kluah")
+chunk_size = 32
 database_folder = "user://chunkdata"
+database_uid = "423dfb4277"
 database_name = "MyFirstWorld"
-database_format = "tscn"
+database_format = "scn"
 
 [node name="TestTarget" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.149, 14.1616, 3.944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7693, 36.9385, -45.6211)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
@@ -24,7 +26,7 @@ cone = true
 
 [node name="TestTarget2" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7958, 14.1616, -35.8343)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3272, 14.1616, -35.8343)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget2"]
