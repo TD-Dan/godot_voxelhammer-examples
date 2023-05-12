@@ -29,14 +29,21 @@ func _ready():
 	chunkmanager.connect("new_chunk_created", _on_chunk_created)
 	chunkmanager.connect("chunk_loaded", _on_chunk_loaded)
 	chunkmanager.connect("chunk_activated", _on_chunk_activated)
+	chunkmanager.connect("chunk_deactivated", _on_chunk_deactivated)
+	chunkmanager.connect("chunk_unloaded", _on_chunk_unloaded)
 	chunkmanager.get_chunk_at(Vector3i(0,0,0))
+	chunkmanager.add_hotspot(%MovingTarget)
 
 
-func _on_chunk_created(chunk):
+func _process(delta):
+	%MovingTarget.progress_ratio += delta/50.0
+
+func _on_chunk_created(chunk: Chunk):
 	print("Received 'new_chunk_created' with %s" % chunk)
 	chunk.persistent_data["BytesData"] = PackedByteArray()
 	chunk.persistent_data["BytesData"].resize(64*64*64)
 	chunk.persistent_data["BytesData"].fill(2)
+	chunk.data_changed = true
 
 
 func _on_chunk_loaded(chunk):
@@ -52,6 +59,17 @@ func _on_chunk_loaded(chunk):
 func _on_chunk_activated(chunk):
 	print("Received 'chunk_activated' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].color = Color(0.1,1.0,0.1)
+
+
+func _on_chunk_deactivated(chunk):
+	print("Received 'chunk_deactivated' with %s" % chunk)
+	chunk.transient_data["DebugMesh"].color = Color(0.1,0.1,0.5)
+
+
+func _on_chunk_unloaded(chunk):
+	print("Received 'chunk_unloaded' with %s" % chunk)
+	chunk.transient_data["DebugMesh"].color = Color(1,0,0)
+	chunk.transient_data["DebugMesh"].queue_free()
 
 
 func get_status_text():

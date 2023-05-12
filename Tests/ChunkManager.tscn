@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwusxchr54gqt"]
+[gd_scene load_steps=4 format=3 uid="uid://cwusxchr54gqt"]
 
 [ext_resource type="Script" path="res://Tests/ChunkManagerTest.gd" id="1_rix22"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkManager.gd" id="2_kluah"]
+
+[sub_resource type="Curve3D" id="Curve3D_yfdtq"]
+_data = {
+"points": PackedVector3Array(-161.374, 0, 0.505188, 161.374, 0, -0.505188, -3.74353, 0, -256.471, -14.3412, 0, -116.642, 14.3412, 0, 116.642, 261.091, 0, -31.7924, 130.983, 0, -1.91216, -130.983, 0, 1.91216, 49.681, 0, 277.44, 15.2973, 0, 141.5, -15.2973, 0, -141.5, -226.51, 0, -0.241752, -138.486, 0, 0.827515, 138.486, 0, -0.827515, -3.74353, 0, -256.471),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Test_ChunkManager" type="Node3D"]
 script = ExtResource("1_rix22")
@@ -10,14 +17,14 @@ script = ExtResource("1_rix22")
 unique_name_in_owner = true
 script = ExtResource("2_kluah")
 chunk_size = 32
+half_chunk = Vector3i(16, 16, 16)
 database_folder = "user://chunkdata"
 database_uid = "423dfb4277"
-database_name = "MyFirstWorld"
+database_name = "UnNamed"
 database_format = "scn"
 
 [node name="TestTarget" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7693, 36.9385, -45.6211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0488, 96.3514, 108.53)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
@@ -25,8 +32,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 
 cone = true
 
 [node name="TestTarget2" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3272, 14.1616, -35.8343)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.771, 101.219, 50.6411)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget2"]
@@ -65,5 +71,24 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "fetching ChunkServer status..."
 autowrap_mode = 3
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.938463, -0.34538, 0, 0.34538, 0.938463, 0, 38.5096, 0)
+curve = SubResource("Curve3D_yfdtq")
+
+[node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -221.646, 0, -84.9753)
+progress = 1303.56
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="Path3D/MovingTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Path3D/MovingTarget/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
+cone = true
 
 [connection signal="timeout" from="HBoxContainer/UpdateTimer" to="." method="_on_update_timer_timeout"]
