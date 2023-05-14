@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
-"points": PackedVector3Array(-161.374, 0, 0.505188, 161.374, 0, -0.505188, -3.74353, 0, -256.471, -14.3412, 0, -116.642, 14.3412, 0, 116.642, 261.091, 0, -31.7924, 130.983, 0, -1.91216, -130.983, 0, 1.91216, 49.681, 0, 277.44, 15.2973, 0, 141.5, -15.2973, 0, -141.5, -226.51, 0, -0.241752, -138.486, 0, 0.827515, 138.486, 0, -0.827515, -3.74353, 0, -256.471),
+"points": PackedVector3Array(-161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506, -11.2489, 21.4879, -58.2553, 11.2489, -21.4879, 58.2553, 261.091, 0, -31.7924, 130.983, 0, -1.91216, -130.983, 0, 1.91216, 10.5205, -62.3026, 108.152, -3.65977, -28.2425, 64.7601, 3.65977, 28.2425, -64.7601, -226.193, 64.1519, -85.8018, -161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -24,7 +24,7 @@ database_name = "UnNamed"
 database_format = "scn"
 
 [node name="TestTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0488, 96.3514, 108.53)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
@@ -78,8 +78,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -221.646, 0, -84.9753)
-progress = 1303.56
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 241.668, 15.1702, -68.3106)
+progress = 254.129
 rotation_mode = 0
 tilt_enabled = false
 
@@ -88,6 +88,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Path3D/MovingTarget/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
+cone = true
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(-0.308436, -0.328541, -0.892708, 0, 0.938463, -0.34538, 0.951245, -0.106528, -0.289456, 0, 0.596607, 0)
+curve = SubResource("Curve3D_yfdtq")
+
+[node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 260.637, 0, 23.0845)
+progress = 437.519
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="Path3D2/MovingTarget2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Path3D2/MovingTarget2/MovingTarget"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
 cone = true
 
