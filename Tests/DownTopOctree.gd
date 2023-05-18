@@ -59,7 +59,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if not _tracking_target: return
 	
 	_target_position = _tracking_target.global_position

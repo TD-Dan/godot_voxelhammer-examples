@@ -26,31 +26,47 @@ var chunkmanager : ChunkManager
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	chunkmanager = %ChunkManager
+	
+	chunkmanager.connect("chunk_initialized", _on_chunk_initialized)
 	chunkmanager.connect("new_chunk_created", _on_chunk_created)
 	chunkmanager.connect("chunk_loaded", _on_chunk_loaded)
 	chunkmanager.connect("chunk_activated", _on_chunk_activated)
 	chunkmanager.connect("chunk_deactivated", _on_chunk_deactivated)
 	chunkmanager.connect("chunk_unloaded", _on_chunk_unloaded)
+	chunkmanager.connect("chunk_deleted", _on_chunk_deleted)
+	chunkmanager.connect("shortest_distance_updated", _on_shortest_distance_updated)
+	
+	chunkmanager.add_hotspot(%TestTarget)
 	chunkmanager.add_hotspot(%MovingTarget)
 	chunkmanager.add_hotspot(%MovingTarget2)
 
 
 func _process(delta):
-	%MovingTarget.progress_ratio += delta/200.0
-	%MovingTarget2.progress_ratio += delta/100.0
+	%MovingTarget.progress_ratio += delta/100.0
+	%MovingTarget2.progress_ratio += delta/50.0
+
+
+func _on_chunk_initialized(chunk : Chunk):
+	#print("Received 'chunk_initialized' with %s" % chunk)
+	
+	if chunk.transient_data.has("DebugMesh"):
+		push_error('ChunkMnagerTest: Found existing chunk.transient_data["DebugMesh"]!')
+		
+	var new_debug_mesh = DebugMesh.new(Color(0,0,0))
+	
+	new_debug_mesh.position = chunk.position
+	new_debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
+	new_debug_mesh.text += "initialized at %s\n" % Time.get_datetime_string_from_system()
+	
+	chunk.transient_data["DebugMesh"] = new_debug_mesh
+	add_child(new_debug_mesh)
 
 
 func _on_chunk_created(chunk: Chunk):
 	#print("Received 'new_chunk_created' with %s" % chunk)
 	
-	if chunk.transient_data.has("DebugMesh"):
-		push_error('ChunkMnagerTest: Found existing chunk.transient_data["DebugMesh"]!')
-	
-	var new_debug_mesh = DebugMesh.new(Color(0.5,0,0))
-	chunk.transient_data["DebugMesh"] = new_debug_mesh
-	new_debug_mesh.text += "created at %s\n" % Time.get_datetime_string_from_system()
-	add_child(new_debug_mesh)
-	
+	chunk.transient_data["DebugMesh"].color = Color(0.,1.,1.)
+	chunk.transient_data["DebugMesh"].text += "created at %s\n" % Time.get_datetime_string_from_system()
 	
 	chunk.persistent_data["BytesData"] = PackedByteArray()
 	chunk.persistent_data["BytesData"].resize(64*64*64)
@@ -61,21 +77,14 @@ func _on_chunk_created(chunk: Chunk):
 	chunk.data_changed = true
 
 
-func _on_chunk_loaded(chunk):
+func _on_chunk_loaded(chunk : Chunk):
 	#print("Received 'chunk_loaded' with %s" % chunk)
-	var debug_mesh = chunk.transient_data.get("DebugMesh")
-	if not debug_mesh:
-		debug_mesh = DebugMesh.new()
-		chunk.transient_data["DebugMesh"] = debug_mesh
-		add_child(debug_mesh)
 	
-	debug_mesh.position = chunk.position
-	debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
-	debug_mesh.color = Color(0.1,0.1,0.1)
-	debug_mesh.text += "loaded at %s\n" % Time.get_datetime_string_from_system()
+	chunk.transient_data["DebugMesh"].color = Color(0.1,0.1,0.1)
+	chunk.transient_data["DebugMesh"].text += "loaded at %s\n" % Time.get_datetime_string_from_system()
 
 
-func _on_chunk_activated(chunk):
+func _on_chunk_activated(chunk : Chunk):
 	#print("Received 'chunk_activated' with %s" % chunk)
 	
 	chunk.persistent_data["Counter"] += 1
@@ -88,10 +97,11 @@ func _on_chunk_activated(chunk):
 	
 	chunk.transient_data["CounterLabel"] = Label3D.new()
 	chunk.transient_data["CounterLabel"].text = "%s" % chunk.persistent_data["Counter"]
+	chunk.transient_data["CounterLabel"].vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 	
 	chunk.transient_data["DebugMesh"].add_child(chunk.transient_data["CounterLabel"])
 
-func _on_chunk_deactivated(chunk):
+func _on_chunk_deactivated(chunk : Chunk):
 	#print("Received 'chunk_deactivated' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].color = Color(0.1,0.1,0.5)
 	chunk.transient_data["DebugMesh"].text += "Deactivated at %s \n" % Time.get_datetime_string_from_system()
@@ -99,14 +109,31 @@ func _on_chunk_deactivated(chunk):
 	chunk.transient_data.erase("CounterLabel")
 
 
-func _on_chunk_unloaded(chunk):
+func _on_chunk_unloaded(chunk : Chunk):
+	#print("Received 'chunk_unloaded' with %s" % chunk)
+	chunk.transient_data["DebugMesh"].text = ""
+	chunk.transient_data["DebugMesh"].color = Color(0,0,0)
+
+
+func _on_chunk_deleted(chunk : Chunk):
 	#print("Received 'chunk_unloaded' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].color = Color(1,0,0)
 	chunk.transient_data["DebugMesh"].queue_free()
 
 
+func _on_shortest_distance_updated(chunk : Chunk):
+	#print("Received 'shortest_distance_updated' with %s" % chunk)
+	if not chunk.transient_data.has("DebugMesh"): return
+	
+	if not chunk.transient_data.has("DistanceLabel"):
+		chunk.transient_data["DistanceLabel"] = Label3D.new()
+		chunk.transient_data["DistanceLabel"].vertical_alignment = VERTICAL_ALIGNMENT_TOP
+		chunk.transient_data["DebugMesh"].add_child(chunk.transient_data["DistanceLabel"])
+	chunk.transient_data["DistanceLabel"].text = "%d.1" % chunk.dist_to_closest_hotspot
+
+
 func get_status_text():
-	return "CHUNKSERVER: %s chunks, %s active\n%s hotspots" % [chunkmanager.chunks.size(), chunkmanager.active_chunks.size(), chunkmanager.hotspots.size()]
+	return "CHUNKSERVER: %s chunks, %s loaded, %s active\n%s hotspots" % [chunkmanager.chunks.size(), chunkmanager.loaded_chunks.size(), chunkmanager.active_chunks.size(), chunkmanager.hotspots.size()]
 
 
 func _on_update_timer_timeout():
