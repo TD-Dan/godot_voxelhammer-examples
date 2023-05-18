@@ -52,7 +52,7 @@ func _on_chunk_initialized(chunk : Chunk):
 	if chunk.transient_data.has("DebugMesh"):
 		push_error('ChunkMnagerTest: Found existing chunk.transient_data["DebugMesh"]!')
 		
-	var new_debug_mesh = DebugMesh.new(Color(0,0,0))
+	var new_debug_mesh = DebugMesh.new(Color(0., 0., 0., .3))
 	
 	new_debug_mesh.position = chunk.position
 	new_debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
@@ -64,8 +64,14 @@ func _on_chunk_initialized(chunk : Chunk):
 
 func _on_chunk_created(chunk: Chunk):
 	#print("Received 'new_chunk_created' with %s" % chunk)
+	if not chunk.transient_data.has("DebugMesh"):
+		var new_debug_mesh = DebugMesh.new()
+		new_debug_mesh.position = chunk.position
+		new_debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
+		chunk.transient_data["DebugMesh"] = new_debug_mesh
+		add_child(new_debug_mesh)
 	
-	chunk.transient_data["DebugMesh"].color = Color(0.,1.,1.)
+	chunk.transient_data["DebugMesh"].color = Color(0., 1., 1., .8)
 	chunk.transient_data["DebugMesh"].text += "created at %s\n" % Time.get_datetime_string_from_system()
 	
 	chunk.persistent_data["BytesData"] = PackedByteArray()
@@ -79,8 +85,14 @@ func _on_chunk_created(chunk: Chunk):
 
 func _on_chunk_loaded(chunk : Chunk):
 	#print("Received 'chunk_loaded' with %s" % chunk)
-	
-	chunk.transient_data["DebugMesh"].color = Color(0.1,0.1,0.1)
+	if not chunk.transient_data.has("DebugMesh"):
+		var new_debug_mesh = DebugMesh.new()
+		new_debug_mesh.position = chunk.position
+		new_debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
+		chunk.transient_data["DebugMesh"] = new_debug_mesh
+		add_child(new_debug_mesh)
+		
+	chunk.transient_data["DebugMesh"].color = Color(.1, .1, .1, .8)
 	chunk.transient_data["DebugMesh"].text += "loaded at %s\n" % Time.get_datetime_string_from_system()
 
 
@@ -91,7 +103,7 @@ func _on_chunk_activated(chunk : Chunk):
 	chunk.data_changed = true
 	
 	
-	chunk.transient_data["DebugMesh"].color = Color(0.1,1.0,0.1)
+	chunk.transient_data["DebugMesh"].color = Color(.1, 1.0, .1, 1.0)
 	chunk.transient_data["DebugMesh"].text += "Activated at %s\n" % Time.get_datetime_string_from_system()
 	
 	
@@ -103,7 +115,7 @@ func _on_chunk_activated(chunk : Chunk):
 
 func _on_chunk_deactivated(chunk : Chunk):
 	#print("Received 'chunk_deactivated' with %s" % chunk)
-	chunk.transient_data["DebugMesh"].color = Color(0.1,0.1,0.5)
+	chunk.transient_data["DebugMesh"].color = Color(.1, .1, .2, .8)
 	chunk.transient_data["DebugMesh"].text += "Deactivated at %s \n" % Time.get_datetime_string_from_system()
 	chunk.transient_data["CounterLabel"].queue_free()
 	chunk.transient_data.erase("CounterLabel")
@@ -112,12 +124,13 @@ func _on_chunk_deactivated(chunk : Chunk):
 func _on_chunk_unloaded(chunk : Chunk):
 	#print("Received 'chunk_unloaded' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].text = ""
-	chunk.transient_data["DebugMesh"].color = Color(0,0,0)
+	chunk.transient_data["DebugMesh"].color = Color(.5, .5, .5, .2)
 
 
 func _on_chunk_deleted(chunk : Chunk):
 	#print("Received 'chunk_unloaded' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].color = Color(1,0,0)
+	remove_child(chunk.transient_data["DebugMesh"])
 	chunk.transient_data["DebugMesh"].queue_free()
 
 
