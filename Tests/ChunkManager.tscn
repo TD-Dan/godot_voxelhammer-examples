@@ -22,14 +22,13 @@ database_folder = "user://chunkdata"
 database_uid = "423dfb4277"
 database_name = "UnNamed"
 database_format = "scn"
-max_chunks = 400
-max_loaded = 200
+max_chunks = 1000
+max_loaded = 300
 max_active = 100
-backup_strategy = 0
 
 [node name="TestTarget" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -349.488, 310.132, 819.141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -592.936, 310.132, 819.141)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
@@ -87,8 +86,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 157.562, 37.6473, -110.937)
-progress = 155.914
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 14.3984, 47.7886, -126.481)
+progress = 11.0947
 rotation_mode = 0
 tilt_enabled = false
 
@@ -108,8 +107,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 236.334, 17.6112, -73.4991)
-progress = 246.296
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -39.3465, 48.8982, -126.926)
+progress = 1190.09
 rotation_mode = 0
 tilt_enabled = false
 
@@ -122,8 +121,5 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 4, 
 radius = 2.0
 height = 8.0
 cone = true
-
-[node name="Probes" type="Node3D" parent="."]
-unique_name_in_owner = true
 
 [connection signal="timeout" from="HBoxContainer/UpdateTimer" to="." method="_on_update_timer_timeout"]
