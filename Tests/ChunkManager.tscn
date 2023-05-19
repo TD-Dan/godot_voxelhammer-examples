@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwusxchr54gqt"]
+[gd_scene load_steps=5 format=3 uid="uid://cwusxchr54gqt"]
 
 [ext_resource type="Script" path="res://Tests/ChunkManagerTest.gd" id="1_rix22"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkManager.gd" id="2_kluah"]
+[ext_resource type="Script" path="res://Tests/SortedArrayView.gd" id="3_i032l"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
@@ -86,8 +87,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 14.3984, 47.7886, -126.481)
-progress = 11.0947
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -98.6186, -40.5038, 79.584)
+progress = 733.149
 rotation_mode = 0
 tilt_enabled = false
 
@@ -107,8 +108,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -39.3465, 48.8982, -126.926)
-progress = 1190.09
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 169.757, 35.6333, -107.549)
+progress = 168.732
 rotation_mode = 0
 tilt_enabled = false
 
@@ -121,5 +122,17 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 4, 
 radius = 2.0
 height = 8.0
 cone = true
+
+[node name="SortedArrayView" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_i032l")
+color_by_chunk_status = true
+reverse_view = true
 
 [connection signal="timeout" from="HBoxContainer/UpdateTimer" to="." method="_on_update_timer_timeout"]

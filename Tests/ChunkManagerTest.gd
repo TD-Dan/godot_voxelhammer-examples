@@ -1,4 +1,4 @@
-@tool
+#@tool
 
 extends Node3D
 
@@ -39,7 +39,8 @@ func _ready():
 	chunkmanager.add_hotspot(%TestTarget)
 	chunkmanager.add_hotspot(%MovingTarget)
 	chunkmanager.add_hotspot(%MovingTarget2)
-
+	
+	%SortedArrayView.array_data = chunkmanager.chunks_by_distance
 
 func _process(delta):
 	%MovingTarget.progress_ratio += delta/100.0
@@ -154,7 +155,9 @@ func _on_shortest_distance_updated(chunk : Chunk):
 
 
 func get_status_text():
-	return "CHUNKSERVER: %s chunks, %s loaded, %s active\n%s hotspots" % [chunkmanager.chunks.size(), chunkmanager.loaded_chunks.size(), chunkmanager.active_chunks.size(), chunkmanager.hotspots.size()]
+	return "CHUNKSERVER: %s/%s chunks by position/distance, %s loaded, %s active\n%s hotspots" %\
+		[chunkmanager.chunks_by_position.size(), chunkmanager.chunks_by_distance.size(), chunkmanager.loaded_chunks.size(),\
+		chunkmanager.active_chunks.size(), chunkmanager.hotspots.size()]
 
 
 func _on_update_timer_timeout():
