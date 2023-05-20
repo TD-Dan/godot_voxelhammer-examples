@@ -4,7 +4,7 @@ extends Node3D
 
 
 @export var refresh_blobs = false:
-	set(nv):
+	set(_nv):
 		for vox_node in get_children():
 			vox_node.apply_paintstack()
 

@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://crssajomwsud4"]
+
+[ext_resource type="Script" path="res://Tests/SortedArrayTest.gd" id="1_c4x3k"]
+[ext_resource type="Script" path="res://Tests/SortedArrayView.gd" id="2_kge4q"]
+
+[node name="SortedArrayTest" type="Node"]
+script = ExtResource("1_c4x3k")
+
+[node name="Container" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/MarginContainer"]
+layout_mode = 2
+
+[node name="SortedArrayView" type="Control" parent="Container/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_kge4q")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Purpose of test:
+Validate SortedArray functionality in isolation.
+Test:
+1000 values in SortedArray. 1 random insert(), 1 random remove_at() and 1 rolling update() per frame. Should keep ordering intact and maintain healty framerate."
+autowrap_mode = 3

@@ -18,8 +18,17 @@ cascade_smallest_size = 16
 chunk_cascades = 1
 
 [node name="TestTarget" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88064, 5.73832, -0.361395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14844, 14.1616, -1.056)
+metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
+cone = true
+
+[node name="TestTarget2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3312, 14.1616, -209.056)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget2"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
 cone = true

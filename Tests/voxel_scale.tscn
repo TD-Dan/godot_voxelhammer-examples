@@ -37,6 +37,18 @@ mesh = SubResource("PlaneMesh_tie6s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_01omt")
 
+[node name="VoxelBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+script = ExtResource("1_eg5wj")
+paint_mode = true
+metadata/_edit_group_ = true
+
+[node name="VoxelInstance3D" type="Node3D" parent="VoxelBody3D"]
+script = ExtResource("2_loswh")
+configuration = ExtResource("3_0hxvj")
+voxel_data = SubResource("Resource_iowfv")
+generate_collision_sibling = 3
+
 [node name="VoxelBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 script = ExtResource("1_eg5wj")
@@ -84,18 +96,6 @@ configuration = ExtResource("3_0hxvj")
 voxel_data = SubResource("Resource_iowfv")
 generate_collision_sibling = 1
 mesh_scale = 8.0
-
-[node name="VoxelBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-script = ExtResource("1_eg5wj")
-paint_mode = true
-metadata/_edit_group_ = true
-
-[node name="VoxelInstance3D" type="Node3D" parent="VoxelBody3D"]
-script = ExtResource("2_loswh")
-configuration = ExtResource("3_0hxvj")
-voxel_data = SubResource("Resource_iowfv")
-generate_collision_sibling = 3
 
 [node name="VoxelBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)

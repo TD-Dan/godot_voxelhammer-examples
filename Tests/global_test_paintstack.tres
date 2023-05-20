@@ -45,4 +45,6 @@ active = true
 [resource]
 script = ExtResource("4_g5y32")
 use_global_coordinates = true
+clear_voxel_data = true
+clear_blend_buffer = false
 operation_stack = [SubResource("Resource_yabuf"), SubResource("Resource_i8w08"), SubResource("Resource_64unf")]
