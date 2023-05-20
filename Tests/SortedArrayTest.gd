@@ -22,7 +22,7 @@ func _ready():
 
 var iterator = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	iterator += 1
 	if iterator >= sorted_array.size():
 		iterator = 0

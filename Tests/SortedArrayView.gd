@@ -2,8 +2,6 @@ extends Control
 
 
 @export var color_data = Color(0,0,0,0.3)
-@export var color_active = Color(0.5,0.5,1,0.3)
-@export var color_loaded = Color(0,1,0,0.5)
 @export var color_by_chunk_status = false
 @export var reverse_view = false
 
@@ -32,10 +30,15 @@ func _draw():
 	for i in range(start, end, iterator_advance):
 		var data_point = array_data._order[i]
 		if color_by_chunk_status:
-			if data_point.active: cooloor = color_active
-			elif data_point.loaded: cooloor = color_loaded
+			cooloor = Color(0,0,0,0.1)
+			if data_point.loaded:
+				cooloor.b = 1.0
+				cooloor.a = 0.8
+			if data_point.active:
+				cooloor.g = 1.0
+				cooloor.a = 0.5
 		
-		draw_line(Vector2(x, size.y),Vector2(x,size.y-data_point._sorted_array_key),cooloor,1.0)
+		draw_line(Vector2(x, size.y),Vector2(x,size.y-data_point._sorted_array_key),cooloor, 1.0)
 		x += iterator_advance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

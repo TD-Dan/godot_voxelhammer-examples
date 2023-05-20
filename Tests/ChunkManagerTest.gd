@@ -1,4 +1,4 @@
-#@tool
+@tool
 
 extends Node3D
 
@@ -37,13 +37,14 @@ func _ready():
 	chunkmanager.connect("shortest_distance_updated", _on_shortest_distance_updated)
 	
 	chunkmanager.add_hotspot(%TestTarget)
+	chunkmanager.add_hotspot(%TestTarget2)
 	chunkmanager.add_hotspot(%MovingTarget)
 	chunkmanager.add_hotspot(%MovingTarget2)
 	
 	%SortedArrayView.array_data = chunkmanager.chunks_by_distance
 
 func _process(delta):
-	%MovingTarget.progress_ratio += delta/100.0
+	%MovingTarget.progress_ratio += delta/200.0
 	%MovingTarget2.progress_ratio += delta/50.0
 
 
@@ -53,7 +54,7 @@ func _on_chunk_initialized(chunk : Chunk):
 	if chunk.transient_data.has("DebugMesh"):
 		push_error('ChunkMnagerTest: Found existing chunk.transient_data["DebugMesh"]!')
 		
-	var new_debug_mesh = DebugMesh.new(Color(.5, .5, .5, .2))
+	var new_debug_mesh = DebugMesh.new(Color(.1, .1, .1, .2))
 	
 	new_debug_mesh.position = chunk.position
 	new_debug_mesh.scale = Vector3i(chunkmanager.chunk_size,chunkmanager.chunk_size,chunkmanager.chunk_size)
@@ -72,7 +73,7 @@ func _on_chunk_created(chunk: Chunk):
 		chunk.transient_data["DebugMesh"] = new_debug_mesh
 		add_child(new_debug_mesh)
 	
-	chunk.transient_data["DebugMesh"].color = Color(.5, .5, 1., .8)
+	chunk.transient_data["DebugMesh"].color = Color(.1, .1, .5, .2)
 	chunk.transient_data["DebugMesh"].text += "created at %s\n" % Time.get_datetime_string_from_system()
 	
 	chunk.persistent_data["BytesData"] = PackedByteArray()
@@ -129,7 +130,7 @@ func _on_chunk_deactivated(chunk : Chunk):
 func _on_chunk_unloaded(chunk : Chunk):
 	#print("Received 'chunk_unloaded' with %s" % chunk)
 	chunk.transient_data["DebugMesh"].text = ""
-	chunk.transient_data["DebugMesh"].color = Color(.5, .5, .5, .2)
+	chunk.transient_data["DebugMesh"].color = Color(.1, .1, .1, .2)
 
 
 func _on_chunk_deleted(chunk : Chunk):
