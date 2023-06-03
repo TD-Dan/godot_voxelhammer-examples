@@ -13,7 +13,7 @@ func _ready():
 	
 
 func _process(delta):
-	%MovingTarget.progress_ratio += delta/100.0
+	%MovingTarget.progress_ratio += delta/30.0
 	%MovingTarget2.progress_ratio += delta/50.0
 	octree.get_branch(%MovingTarget.global_position)
 
@@ -27,7 +27,7 @@ func _on_branch_added(branch):
 	
 	new_debug_mesh.position = branch.position
 	new_debug_mesh.scale = Vector3i(branch.size, branch.size, branch.size)
-	new_debug_mesh.color = Color(0,0,0,0.75)
+	new_debug_mesh.color = Color(1.0-float(branch.level)/float(octree.levels),float(branch.level)/float(octree.levels),0,0.75)
 	
 	add_child(new_debug_mesh)
 
