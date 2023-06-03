@@ -64,6 +64,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="SettingsContainer" type="HFlowContainer" parent="MarginContainer/HSplitContainer"]
 visible = false

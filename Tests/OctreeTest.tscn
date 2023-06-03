@@ -28,7 +28,7 @@ levels = 7
 
 [node name="TestTarget" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -634.674, 310.132, 819.141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -634.435, 310.132, 788.32)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
@@ -64,13 +64,42 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Purpose of test:
-Validate chunk server functionality in isolation.
+Validate Octree functionality in isolation.
 Test:
-Chunks should generate / load around TestTargets in both editor and in game."
+Octree should generate around moving targets in both editor and in game. Should not affect framerate at all."
 autowrap_mode = 3
 
 [node name="UpdateTimer" type="Timer" parent="HBoxContainer"]
 autostart = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Depth"
+
+[node name="SizeSpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 4.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cache size"
+
+[node name="CacheSpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 4.0
+
+[node name="ToggleDebug" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Show debug boxes"
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -78,7 +107,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "fetching ChunkServer status..."
+text = "fetching Octree status..."
 autowrap_mode = 3
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -87,8 +116,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 222.204, -28.8197, 36.8449)
-progress = 386.233
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 245.183, -18.758, 14.2851)
+progress = 352.438
 rotation_mode = 0
 tilt_enabled = false
 
@@ -108,8 +137,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -24.6346, 48.2842, -126.66)
-progress = 2235.26
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 244.692, 59.9092, 192.001)
+progress = 1366.35
 rotation_mode = 0
 tilt_enabled = false
 
@@ -123,3 +152,7 @@ radius = 4.0
 height = 16.0
 cone = true
 
+[connection signal="timeout" from="HBoxContainer/UpdateTimer" to="." method="_on_update_timer_timeout"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/SizeSpinBox" to="." method="_on_depth_spin_box_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/CacheSpinBox" to="." method="_on_cache_spin_box_value_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/ToggleDebug" to="." method="_on_toggle_debug_toggled"]
