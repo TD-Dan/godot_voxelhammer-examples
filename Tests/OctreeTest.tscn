@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://g6n6wswwj50g"]
+[gd_scene load_steps=6 format=3 uid="uid://g6n6wswwj50g"]
 
 [ext_resource type="Script" path="res://Tests/OctreeTest.gd" id="1_mn4pr"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/Octree.gd" id="2_gmh2b"]
+[ext_resource type="Material" uid="uid://im647kkshlch" path="res://addons/godot-voxelhammer/res/mat_transparent.tres" id="3_j4o5m"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
@@ -39,7 +40,7 @@ cone = true
 
 [node name="TestTarget2" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 401.477, -110.069, 620.113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7542, 3.09104, 14.5524)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget2"]
@@ -47,6 +48,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 
 radius = 4.0
 height = 16.0
 cone = true
+material = ExtResource("3_j4o5m")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = -1
@@ -84,7 +86,7 @@ unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
 max_value = 4096.0
-value = 4.0
+value = 128.0
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -116,8 +118,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 245.183, -18.758, 14.2851)
-progress = 352.438
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -112.169, -34.7766, 71.7021)
+progress = 749.841
 rotation_mode = 0
 tilt_enabled = false
 
@@ -137,8 +139,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 244.692, 59.9092, 192.001)
-progress = 1366.35
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 436.614, 270.22, 158.013)
+progress = 573.018
 rotation_mode = 0
 tilt_enabled = false
 

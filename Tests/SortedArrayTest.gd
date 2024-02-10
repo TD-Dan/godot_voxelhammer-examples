@@ -2,8 +2,9 @@ extends Node
 
 
 var sorted_array = SortedArray.new()
+#var sorted_array = Array() # compared to regular Array
 
-class Sortable:
+class SortableTestClass:
 	var _sorted_array_key : int = 0
 
 
@@ -12,7 +13,7 @@ func _ready():
 	var generated_data = Array()
 	var amount = 1000
 	for i in range(amount):
-		var new_sortable = Sortable.new()
+		var new_sortable = SortableTestClass.new()
 		new_sortable._sorted_array_key = randi_range(0,500)
 		generated_data.push_back(new_sortable)
 	
@@ -27,14 +28,15 @@ func _process(_delta):
 	if iterator >= sorted_array.size():
 		iterator = 0
 	
-	var new_sortable = Sortable.new()
-	new_sortable._sorted_array_key = randi_range(0,500)
-	sorted_array.insert(new_sortable)
+	var new_sortable = SortableTestClass.new()
+	sorted_array.insert(randi_range(0,500), new_sortable)
+	#sorted_array.insert(new_sortable)
 	
 	sorted_array.remove_at(randi_range(0,sorted_array.size()-1))
 	
 	var ro_array = sorted_array.get_array_for_read_only()
 	var sortable = ro_array[iterator]
+	#var sortable = sorted_array[iterator] # Compared to regular array
 	sortable._sorted_array_key += randi_range(-100,100)
 	sortable._sorted_array_key = clampi(sortable._sorted_array_key,0,500)
 	sorted_array.update(sortable)
