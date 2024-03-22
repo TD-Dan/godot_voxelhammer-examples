@@ -2,6 +2,7 @@
 
 extends Node3D
 
+@export var chunkmanager : ChunkSpace3D
 
 @export var add_hotspot : NodePath:
 	set(nv):
@@ -18,9 +19,6 @@ extends Node3D
 @export var open_data_folder : bool = false:
 	set(_nv):
 		OS.shell_open(ProjectSettings.globalize_path(chunkmanager.database_folder))
-
-
-var chunkmanager : ChunkManager
 
 
 # Called when the node enters the scene tree for the first time.

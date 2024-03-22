@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwusxchr54gqt"]
 
 [ext_resource type="Script" path="res://Tests/ChunkManagerTest.gd" id="1_rix22"]
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkManager.gd" id="2_kluah"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkSpace3D.gd" id="2_kluah"]
 [ext_resource type="Script" path="res://Tests/SortedArrayView.gd" id="3_i032l"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
@@ -25,9 +25,8 @@ script = ExtResource("1_rix22")
 unique_name_in_owner = true
 script = ExtResource("2_kluah")
 chunk_size = 128
-half_chunk = Vector3i(64, 64, 64)
-database_folder = "user://chunkdata"
-database_uid = "423dfb4277"
+database_root_folder = "user://chunkdata"
+database_uid = "c411fa553a"
 database_name = "UnNamed"
 database_format = "scn"
 max_chunks = 100
@@ -95,8 +94,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -216.132, 40.9172, -41.864)
-progress = 923.431
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -204.635, 27.6106, -20.0914)
+progress = 895.429
 rotation_mode = 0
 tilt_enabled = false
 
@@ -116,8 +115,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 147.39, 93.7204, -70.7553)
-progress = 163.585
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -112.649, 56.0831, -129.565)
+progress = 2146.81
 rotation_mode = 0
 tilt_enabled = false
 
