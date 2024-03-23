@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d12ma7qrq2c2n"]
 
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelBody3D.gd" id="1_eg5wj"]
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="2_loswh"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance.gd" id="2_loswh"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="3_0hxvj"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="4_io6ot"]
 

@@ -1,5 +1,7 @@
 extends OptionButton
 
+## Advanced button to easily set up modifying selected property inside an object
+
 var _target_node : NodePath
 @export var target_node : NodePath:
 	set(nv):

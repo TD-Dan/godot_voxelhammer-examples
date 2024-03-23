@@ -2,14 +2,14 @@
 
 [ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://res/MainEnvironment.tres" id="1_543cc"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://res/CameraAttributesPhysical.tres" id="1_fk8i1"]
-[ext_resource type="Script" path="res://scripts/LabelFPS.gd" id="3_hi8b3"]
+[ext_resource type="Script" path="res://ui/LabelFPS.gd" id="3_hi8b3"]
 [ext_resource type="Script" path="res://addons/godot-free-look-camera/free_look_camera.gd" id="3_mvgpr"]
-[ext_resource type="Script" path="res://scripts/VSyncButton.gd" id="4_prman"]
-[ext_resource type="Theme" uid="uid://sgnyfpl55byd" path="res://Tests/UI_theme.tres" id="4_xxumw"]
+[ext_resource type="Script" path="res://ui/VSyncButton.gd" id="4_prman"]
+[ext_resource type="Theme" uid="uid://sgnyfpl55byd" path="res://res/UI_theme.tres" id="4_xxumw"]
 [ext_resource type="Texture2D" uid="uid://dnpesvmv0c2ag" path="res://addons/godot-voxelhammer/res/icon_vh.png" id="5_rvvcp"]
 [ext_resource type="Script" path="res://ui/SelectValue.gd" id="6_jq2oo"]
 [ext_resource type="Script" path="res://ui/ToggleValue.gd" id="6_p1r1t"]
-[ext_resource type="PackedScene" uid="uid://d0tipk1ci2kim" path="res://main_menu.tscn" id="12_o55m4"]
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="8_7cn4w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ru7lw"]
 
@@ -71,6 +71,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="MainSplit" type="HSplitContainer" parent="UI/MarginContainer"]
 layout_mode = 2
+split_offset = 250
 
 [node name="MenuHBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/MainSplit"]
 layout_mode = 2
@@ -126,42 +127,68 @@ custom_path = "/root/VoxelHammer"
 enum_variable_name = "default_configuration.thread_mode"
 enum_class = "VoxelConfiguration.THREAD_MODE"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
 
-[node name="MainMenu" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2" instance=ExtResource("12_o55m4")]
+[node name="MainContainer" type="HFlowContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="MainMenu" type="MenuBar" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("8_7cn4w")
 
-[node name="Settings" type="Button" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2"]
+[node name="Examples" type="PopupMenu" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu"]
+title = "Scene"
+size = Vector2i(115, 100)
+
+[node name="Tests" type="PopupMenu" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu"]
+title = "Scene"
+size = Vector2i(115, 100)
+
+[node name="Settings" type="Button" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer"]
 layout_mode = 2
 toggle_mode = true
 text = "Settings"
 icon = ExtResource("5_rvvcp")
 script = ExtResource("6_p1r1t")
-target_node = NodePath("../../SettingsContainer")
+target_node = NodePath("../../../SettingsContainer")
 bool_variable_name = "visible"
 
-[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Label" type="Label" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "FPS avg/min"
 
-[node name="LabelFPS" type="Label" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="LabelFPS" type="Label" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "   0 /    0"
 script = ExtResource("3_hi8b3")
+
+[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoveInfoLabel" type="Label" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Move with WASD
+- Look with right mouse button
+- Change speed with mouse scroll wheel"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TestUIRoot" type="Control" parent="UI/MarginContainer/MainSplit"]
 unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="item_selected" from="UI/MarginContainer/MainSplit/MenuHBoxContainer/SettingsContainer/HBoxContainer/VSyncButton" to="UI/MarginContainer/MainSplit/MenuHBoxContainer/SettingsContainer/HBoxContainer/VSyncButton" method="_on_item_selected"]
+[connection signal="index_pressed" from="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu/Examples" to="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu" method="_on_examples_index_pressed"]
+[connection signal="index_pressed" from="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu/Tests" to="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu" method="_on_scene_index_pressed"]

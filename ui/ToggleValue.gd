@@ -1,5 +1,7 @@
 extends Button
 
+## Advanced button to easily set up toggling selected property inside an object
+
 var _target_node : NodePath
 @export var target_node : NodePath:
 	set(nv):

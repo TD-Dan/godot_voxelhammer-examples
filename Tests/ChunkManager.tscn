@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwusxchr54gqt"]
+[gd_scene load_steps=5 format=3 uid="uid://cwusxchr54gqt"]
 
 [ext_resource type="Script" path="res://Tests/ChunkManagerTest.gd" id="1_rix22"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkSpace3D.gd" id="2_kluah"]
-[ext_resource type="Script" path="res://Tests/SortedArrayView.gd" id="3_i032l"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
@@ -18,10 +17,15 @@ _data = {
 }
 point_count = 5
 
-[node name="Test_ChunkManager" type="Node3D"]
-script = ExtResource("1_rix22")
+[node name="ChunkManagerTest" type="Node"]
 
-[node name="ChunkManager" type="Node" parent="."]
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="MainTest" type="Node" parent="WORLD" node_paths=PackedStringArray("chunkmanager")]
+script = ExtResource("1_rix22")
+chunkmanager = NodePath("../ChunkSpace3D")
+
+[node name="ChunkSpace3D" type="Node" parent="WORLD"]
 unique_name_in_owner = true
 script = ExtResource("2_kluah")
 chunk_size = 128
@@ -33,39 +37,80 @@ max_chunks = 100
 max_loaded = 80
 max_active = 64
 
-[node name="TestTarget" type="Node3D" parent="."]
+[node name="TestTarget" type="Node3D" parent="WORLD"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -634.674, 310.132, 819.141)
 metadata/_edit_group_ = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
 radius = 4.0
 height = 16.0
 cone = true
 
-[node name="TestTarget2" type="Node3D" parent="."]
+[node name="TestTarget2" type="Node3D" parent="WORLD"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 401.477, -110.069, 620.113)
 metadata/_edit_group_ = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="TestTarget2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget2"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
 radius = 4.0
 height = 16.0
 cone = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 0.9
+[node name="Path3D" type="Path3D" parent="WORLD"]
+transform = Transform3D(1, 0, 0, 0, 0.938463, -0.34538, 0, 0.34538, 0.938463, 0, 38.5096, 0)
+curve = SubResource("Curve3D_yfdtq")
+
+[node name="MovingTarget" type="PathFollow3D" parent="WORLD/Path3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -204.635, 27.6107, -20.0915)
+progress = 895.429
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="WORLD/Path3D/MovingTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/Path3D/MovingTarget/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="Path3D2" type="Path3D" parent="WORLD"]
+transform = Transform3D(-0.308436, -0.328541, -0.892708, 0, 0.938463, -0.34538, 0.951245, -0.106528, -0.289456, 0, 0.596607, 0)
+curve = SubResource("Curve3D_xktrm")
+
+[node name="MovingTarget2" type="PathFollow3D" parent="WORLD/Path3D2"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -112.644, 56.0825, -129.565)
+progress = 2146.81
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="WORLD/Path3D2/MovingTarget2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/Path3D2/MovingTarget2/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -76,10 +121,10 @@ Test:
 Chunks should generate / load around TestTargets in both editor and in game."
 autowrap_mode = 3
 
-[node name="UpdateTimer" type="Timer" parent="HBoxContainer"]
+[node name="UpdateTimer" type="Timer" parent="UI"]
 autostart = true
 
-[node name="StatusLabel" type="Label" parent="HBoxContainer"]
+[node name="StatusLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -87,59 +132,3 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "fetching ChunkServer status..."
 autowrap_mode = 3
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.938463, -0.34538, 0, 0.34538, 0.938463, 0, 38.5096, 0)
-curve = SubResource("Curve3D_yfdtq")
-
-[node name="MovingTarget" type="PathFollow3D" parent="Path3D"]
-unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -204.635, 27.6106, -20.0914)
-progress = 895.429
-rotation_mode = 0
-tilt_enabled = false
-
-[node name="MovingTarget" type="Node3D" parent="Path3D/MovingTarget"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
-metadata/_edit_group_ = true
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Path3D/MovingTarget/MovingTarget"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
-radius = 4.0
-height = 16.0
-cone = true
-
-[node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(-0.308436, -0.328541, -0.892708, 0, 0.938463, -0.34538, 0.951245, -0.106528, -0.289456, 0, 0.596607, 0)
-curve = SubResource("Curve3D_xktrm")
-
-[node name="MovingTarget2" type="PathFollow3D" parent="Path3D2"]
-unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -112.649, 56.0831, -129.565)
-progress = 2146.81
-rotation_mode = 0
-tilt_enabled = false
-
-[node name="MovingTarget" type="Node3D" parent="Path3D2/MovingTarget2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
-metadata/_edit_group_ = true
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Path3D2/MovingTarget2/MovingTarget"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
-radius = 4.0
-height = 16.0
-cone = true
-
-[node name="SortedArrayView" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_i032l")
-color_by_chunk_status = true
-reverse_view = true
-
-[connection signal="timeout" from="HBoxContainer/UpdateTimer" to="." method="_on_update_timer_timeout"]

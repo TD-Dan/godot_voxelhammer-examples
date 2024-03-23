@@ -32,7 +32,7 @@ func _ready():
 		var filename = dir.get_next()
 		while filename != "":
 			if filename.ends_with(".tscn"):
-				examples.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Examples/%s" % filename) ))
+				examples.append(SceneEntry.new(filename.get_basename(), load("res://Examples/%s" % filename) ))
 			filename = dir.get_next()
 	
 	# autodiscover test scenes
@@ -42,7 +42,7 @@ func _ready():
 		var filename = dir.get_next()
 		while filename != "":
 			if filename.ends_with(".tscn"):
-				tests.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Tests/%s" % filename) ))
+				tests.append(SceneEntry.new(filename.get_basename(), load("res://Tests/%s" % filename) ))
 			filename = dir.get_next()
 	
 	# add examples and tests to main menu
