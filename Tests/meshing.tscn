@@ -86,7 +86,7 @@ configuration = ExtResource("3_0hxvj")
 voxel_data = SubResource("Resource_1e4mx")
 generate_collision_sibling = 3
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
+[node name="TESTUI" type="VBoxContainer" parent="."]
 anchors_preset = -1
 anchor_left = 0.25
 anchor_right = 0.9
@@ -96,7 +96,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="TESTUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0

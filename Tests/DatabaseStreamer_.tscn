@@ -1,46 +1,44 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwo8qfbnydrvl"]
 
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/DatabaseStreamer.gd" id="1_d6qeo"]
-[ext_resource type="Script" path="res://Tests/TextEditStreamable.gd" id="2_kanvg"]
+[ext_resource type="Script" path="res://Tests/parts/TextEditStreamable.gd" id="2_kanvg"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Component/Streamable.gd" id="2_vm7oi"]
 [ext_resource type="PackedScene" uid="uid://c4dbo2hedefux" path="res://Tests/parts/DatabaseStreamer_text_edit.tscn" id="4_vbfte"]
 
-[node name="Test_DatabaseStreamer" type="Node3D"]
+[node name="DatabaseStreamerTest" type="Node"]
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 0.9
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Purpose of test:
 Validate DatabaseStreamer functionality in isolation.
 Test:
 Data in nodes should be saved accross game sessions."
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Default stream group, no backup
 "
 
-[node name="DatabaseStreamer" type="Node" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="DatabaseStreamer" type="Node" parent="UI/HBoxContainer/VBoxContainer"]
 script = ExtResource("1_d6qeo")
 database_location = "user://database_streamer_test"
 database_uid = "001"
@@ -48,46 +46,49 @@ database_name = "test"
 database_format = "tscn"
 backup_strategy = 1
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
 
-[node name="Streamable" type="Node" parent="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit" groups=["all_streamables"]]
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer/TextEdit" groups=["all_streamables"]]
 script = ExtResource("2_vm7oi")
 stream_data_id = "1393196022199179"
-persistent_data = Array[String](["text"])
 
-[node name="TextEdit2" type="TextEdit" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextEdit2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 placeholder_text = "(Edit this text)"
+script = ExtResource("2_kanvg")
 
-[node name="Streamable" type="Node" parent="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit2" groups=["all_streamables"]]
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer/TextEdit2" groups=["all_streamables"]]
 script = ExtResource("2_vm7oi")
 stream_data_id = "1394703740237401"
 
-[node name="TextEdit3" parent="HBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
+[node name="TextEdit3" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
 layout_mode = 2
 
-[node name="Streamable" parent="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit3" index="5"]
+[node name="Streamable" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="5"]
 stream_data_id = "1393196240295041"
 
-[node name="TextEdit4" parent="HBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
+[node name="TextEdit4" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+[node name="TextEdit5" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Custom stream group, interval_rr
 "
 
-[node name="DatabaseStreamer2" type="Node" parent="HBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="DatabaseStreamer2" type="Node" parent="UI/HBoxContainer/VBoxContainer2"]
 script = ExtResource("1_d6qeo")
 stream_group = "stream_2"
 database_location = "user://database_streamer_test"
@@ -96,19 +97,18 @@ database_name = "test"
 database_format = "tscn"
 backup_interval_seconds = 5.0
 
-[node name="TextEdit5" type="TextEdit" parent="HBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="TextEdit5" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
 
-[node name="Streamable" type="Node" parent="HBoxContainer/HBoxContainer/VBoxContainer2/TextEdit5" groups=["stream_2"]]
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer2/TextEdit5" groups=["stream_2"]]
 script = ExtResource("2_vm7oi")
 stream_data_id = "1409620681782230"
-persistent_data = Array[String](["text"])
 
-[connection signal="text_changed" from="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit" to="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit" method="_on_text_changed"]
-[connection signal="text_changed" from="HBoxContainer/HBoxContainer/VBoxContainer2/TextEdit5" to="HBoxContainer/HBoxContainer/VBoxContainer2/TextEdit5" method="_on_text_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/VBoxContainer/TextEdit" method="_on_text_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit5" to="UI/HBoxContainer/VBoxContainer2/TextEdit5" method="_on_text_changed"]
 
-[editable path="HBoxContainer/HBoxContainer/VBoxContainer/TextEdit3"]
+[editable path="UI/HBoxContainer/VBoxContainer/TextEdit3"]

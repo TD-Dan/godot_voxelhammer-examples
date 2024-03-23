@@ -69,21 +69,19 @@ voxel_data = SubResource("Resource_bhis1")
 paint_stack = SubResource("Resource_ew5xw")
 metadata/_edit_group_ = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 0.9
+[node name="TESTUI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="TESTUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Purpose of test:
 Visual confirmation that PaintStack is rendered properly on VoxelInstance3D.
 Test:

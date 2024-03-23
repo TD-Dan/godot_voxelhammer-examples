@@ -12,18 +12,18 @@ var tests  = []
 
 @onready var examples_menu = $Examples
 @onready var tests_menu = $Tests
-var test_world : Node3D
+var test_world_root : Node3D
+var test_ui_root : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	test_world = get_node_or_null("%TestWorld")
-	if test_world:
-		print("Found TestWorld!")
-	else:
-		print("Creating TestWorld!")
-		test_world = Node3D.new()
-		get_parent().add_child.call_deferred(test_world)
+	# connect with main program
+	test_world_root = get_node_or_null("%TestWorldRoot")
+	test_ui_root = get_node_or_null("%TestUIRoot")
+	if not test_world_root:
+		push_error("No node with unique name TestWorldRoot!")
+	if not test_ui_root:
+		push_error("No node with unique name TestUIRoot!")
 	
 	# autodiscover example scenes
 	var dir = DirAccess.open("res://Examples")
@@ -45,31 +45,46 @@ func _ready():
 				tests.append(SceneEntry.new(filename.to_pascal_case().get_basename(), load("res://Tests/%s" % filename) ))
 			filename = dir.get_next()
 	
-			
-	
-	# add to main menu
+	# add examples and tests to main menu
 	for entry in examples:
-		#print(entry.name)
 		examples_menu.add_item(entry.name)
 	for entry in tests:
-		#print(entry.name)
 		tests_menu.add_item(entry.name)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_scene_index_pressed(index):
-	# clear previous scene
-	for n in test_world.get_children():
-		n.queue_free()
-	test_world.add_child(tests[index].scene.instantiate())
+	var test_scene : Node = tests[index].scene.instantiate()
+	_switch_to_scene(test_scene)
 
 
 func _on_examples_index_pressed(index):
+	var example_scene = examples[index].scene.instantiate()
+	_switch_to_scene(example_scene)
+
+
+func _switch_to_scene(scene : Node = null):
 	# clear previous scene
-	for n in test_world.get_children():
+	for n in test_world_root.get_children():
 		n.queue_free()
-	test_world.add_child(examples[index].scene.instantiate())
+	for n in test_ui_root.get_children():
+		n.queue_free()
+	
+	if not scene:
+		push_warning("scene is null, only clearing world and ui")
+		return
+	
+	var new_world = scene.get_node_or_null("WORLD")
+	var new_ui = scene.get_node_or_null("UI")
+	
+	if new_world:
+		scene.remove_child(new_world)
+		test_world_root.add_child(new_world)
+	else:
+		push_warning("Scene has no Node3D named WORLD")
+	
+	if new_ui:
+		scene.remove_child(new_ui)
+		test_ui_root.add_child(new_ui)
+	else:
+		push_warning("Scene has no Control named UI")
+

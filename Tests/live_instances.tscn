@@ -68,7 +68,7 @@ configuration = ExtResource("3_cj021")
 voxel_data = SubResource("Resource_eqh6p")
 metadata/_edit_group_ = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
+[node name="TESTUI" type="VBoxContainer" parent="."]
 anchors_preset = -1
 anchor_left = 0.25
 anchor_right = 0.9
@@ -78,7 +78,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="TESTUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -89,7 +89,7 @@ Test:
 Update VoxelData once per frame with sphere whose size changes with time. Mesh should be always visible and refreshing as fast as possible. Validate with different size VoxelInstances to generate meshes that will be too slow to update live."
 autowrap_mode = 3
 
-[node name="PerformanceLabel" type="Label" parent="HBoxContainer"]
+[node name="PerformanceLabel" type="Label" parent="TESTUI"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -98,7 +98,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "calculating performance..."
 autowrap_mode = 3
 
-[node name="PerformanceTimer" type="Timer" parent="HBoxContainer/PerformanceLabel"]
+[node name="PerformanceTimer" type="Timer" parent="TESTUI/PerformanceLabel"]
 autostart = true
 
-[connection signal="timeout" from="HBoxContainer/PerformanceLabel/PerformanceTimer" to="." method="_on_performance_timer_timeout"]
+[connection signal="timeout" from="TESTUI/PerformanceLabel/PerformanceTimer" to="." method="_on_performance_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4dbo2hedefux"]
 
-[ext_resource type="Script" path="res://Tests/TextEditStreamable.gd" id="1_wjxha"]
+[ext_resource type="Script" path="res://Tests/parts/TextEditStreamable.gd" id="1_wjxha"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Component/Streamable.gd" id="2_4dmfy"]
 
 [node name="TextEdit2" type="TextEdit"]
@@ -11,7 +11,5 @@ script = ExtResource("1_wjxha")
 
 [node name="Streamable" type="Node" parent="." groups=["all_streamables"]]
 script = ExtResource("2_4dmfy")
-stream_data_id = "1397635290304252"
-persistent_data = Array[String](["text"])
 
 [connection signal="text_changed" from="." to="." method="_on_text_changed"]
