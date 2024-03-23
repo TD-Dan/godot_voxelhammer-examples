@@ -54,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("4_xxumw")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
@@ -63,7 +64,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -75,7 +75,6 @@ split_offset = 250
 
 [node name="MenuHBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/MainSplit"]
 layout_mode = 2
-mouse_filter = 2
 
 [node name="SettingsContainer" type="HFlowContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer"]
 visible = false
@@ -188,6 +187,7 @@ autowrap_mode = 2
 [node name="TestUIRoot" type="Control" parent="UI/MarginContainer/MainSplit"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 
 [connection signal="item_selected" from="UI/MarginContainer/MainSplit/MenuHBoxContainer/SettingsContainer/HBoxContainer/VSyncButton" to="UI/MarginContainer/MainSplit/MenuHBoxContainer/SettingsContainer/HBoxContainer/VSyncButton" method="_on_item_selected"]
 [connection signal="index_pressed" from="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu/Examples" to="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer/MainMenu" method="_on_examples_index_pressed"]

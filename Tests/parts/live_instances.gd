@@ -1,11 +1,11 @@
 extends Node3D
 
 
-@onready var n1 : VoxelInstance3D = $N6
-@onready var n2 : VoxelInstance3D = $N8
-@onready var n3 : VoxelInstance3D = $N16
-@onready var n4 : VoxelInstance3D = $N32
-@onready var n5 : VoxelInstance3D = $N64
+@onready var n1 : VoxelInstance = $N6
+@onready var n2 : VoxelInstance = $N8
+@onready var n3 : VoxelInstance = $N16
+@onready var n4 : VoxelInstance = $N32
+@onready var n5 : VoxelInstance = $N64
 
 var voxel_sizes_total =[6*6*6, 8*8*8, 16*16*16, 32*32*32, 64*64*64]
 var performance_mesh_update_counter = Array()
