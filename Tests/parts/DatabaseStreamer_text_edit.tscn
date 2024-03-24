@@ -34,3 +34,4 @@ grow_vertical = 2
 text = "toggle me"
 
 [connection signal="text_changed" from="." to="." method="_on_data_changed"]
+[connection signal="toggled" from="SomeRandomChild" to="." method="_on_data_changed" unbinds=1]
