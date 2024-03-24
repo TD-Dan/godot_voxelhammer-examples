@@ -44,15 +44,13 @@ backup_strategy = 1
 
 [node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Default stream group, no backup
-"
+text = "Default stream group, no backup, editor and game"
 
 [node name="TextEdit" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Foo 1"
-placeholder_text = "(Edit this text)
-"
+text = "Foo 12"
+placeholder_text = "(Edit this text)"
 script = ExtResource("2_kanvg")
 
 [node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer/TextEdit" groups=["all_streamables"]]
@@ -86,14 +84,17 @@ text = "check me"
 
 [node name="TextEdit3" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
 layout_mode = 2
-text = "foxtrot42"
+text = "foxtrot 3"
 
 [node name="TextEdit4" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
 layout_mode = 2
-text = "boxfrot 33"
+text = "boxfrot 42"
 
 [node name="Streamable" parent="UI/HBoxContainer/VBoxContainer/TextEdit4" index="5"]
 stream_data_id = "custom_id_set_by_user"
+
+[node name="SomeRandomChild" parent="UI/HBoxContainer/VBoxContainer/TextEdit4" index="6"]
+button_pressed = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -106,11 +107,11 @@ database_location = "user://database_streamer_test"
 database_uid = "002"
 database_name = "Test"
 database_format = "tscn"
+backup_strategy = 2
 
 [node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Custom stream group, interval
-"
+text = "Custom stream group, interval, game only"
 
 [node name="TextEdit_2_1" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
@@ -130,16 +131,17 @@ stream_group = "stream_3"
 database_location = "user://database_streamer_test"
 database_uid = "003"
 database_name = "Test"
-database_format = "scn"
+database_format = "tscn"
+backup_strategy = 4
 
 [node name="Label2" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Custom stream group, instant"
+text = "Custom stream group, instant, game only"
 
 [node name="TextEdit_2_2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Brooke B Bannister"
+text = "Brooke 6 Bannister"
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
@@ -148,9 +150,31 @@ script = ExtResource("2_kanvg")
 script = ExtResource("2_vm7oi")
 stream_data_id = "35562631279926"
 
+[node name="OptionButton" type="OptionButton" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "A"
+popup/item_0/id = 0
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
+
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/VBoxContainer/TextEdit" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit2" to="UI/HBoxContainer/VBoxContainer/TextEdit2" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_text_changed"]
+[connection signal="item_selected" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2/OptionButton" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed"]
 
 [editable path="UI/HBoxContainer/VBoxContainer/TextEdit4"]
