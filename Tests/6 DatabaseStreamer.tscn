@@ -108,6 +108,7 @@ database_uid = "002"
 database_name = "Test"
 database_format = "tscn"
 backup_strategy = 2
+backup_interval_seconds = 10.0
 
 [node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -141,7 +142,7 @@ text = "Custom stream group, instant, game only"
 [node name="TextEdit_2_2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Brooke 6 Bannister"
+text = "Brooke 6 Ban"
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
@@ -171,10 +172,10 @@ popup/item_1/id = 1
 popup/item_2/text = "C"
 popup/item_2/id = 2
 
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/VBoxContainer/TextEdit" method="_on_text_changed"]
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit2" to="UI/HBoxContainer/VBoxContainer/TextEdit2" method="_on_text_changed"]
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" method="_on_text_changed"]
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_text_changed"]
-[connection signal="item_selected" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2/OptionButton" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/VBoxContainer/TextEdit" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit2" to="UI/HBoxContainer/VBoxContainer/TextEdit2" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed"]
+[connection signal="item_selected" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2/OptionButton" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed" unbinds=1]
 
 [editable path="UI/HBoxContainer/VBoxContainer/TextEdit4"]

@@ -11,9 +11,5 @@ func _process(delta):
 	pass
 
 
-func _on_text_changed():
-	get_node("Streamable").notify_stream_data_changed()
-
-
-func _on_data_changed(index):
+func _on_data_changed():
 	get_node("Streamable").notify_stream_data_changed()
