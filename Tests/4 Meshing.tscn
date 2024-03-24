@@ -37,7 +37,6 @@ data = PackedInt64Array(0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 2, 2, 2,
 [node name="SingleMaterial1" type="StaticBody3D" parent="WORLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 script = ExtResource("1_ellli")
-metadata/_edit_group_ = true
 
 [node name="VoxelInstance" type="Node3D" parent="WORLD/SingleMaterial1"]
 script = ExtResource("2_uaora")
@@ -49,7 +48,6 @@ metadata/_edit_group_ = true
 [node name="SingleMaterial2" type="StaticBody3D" parent="WORLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
 script = ExtResource("1_ellli")
-metadata/_edit_group_ = true
 
 [node name="VoxelInstance" type="Node3D" parent="WORLD/SingleMaterial2"]
 script = ExtResource("2_uaora")
@@ -61,9 +59,9 @@ metadata/_edit_group_ = true
 [node name="MultiMaterial1" type="StaticBody3D" parent="WORLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 script = ExtResource("1_ellli")
-metadata/_edit_group_ = true
 
 [node name="VoxelInstance" type="Node3D" parent="WORLD/MultiMaterial1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324372, 0, 0)
 script = ExtResource("2_uaora")
 configuration = ExtResource("3_8od07")
 voxel_data = SubResource("Resource_334av")
@@ -73,7 +71,6 @@ metadata/_edit_group_ = true
 [node name="Transparency1" type="StaticBody3D" parent="WORLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 script = ExtResource("1_ellli")
-metadata/_edit_group_ = true
 
 [node name="VoxelInstance" type="Node3D" parent="WORLD/Transparency1"]
 script = ExtResource("2_uaora")
@@ -84,7 +81,6 @@ metadata/_edit_group_ = true
 
 [node name="Erroneus1" type="StaticBody3D" parent="WORLD"]
 script = ExtResource("1_ellli")
-metadata/_edit_group_ = true
 
 [node name="VoxelInstance" type="Node3D" parent="WORLD/Erroneus1"]
 script = ExtResource("2_uaora")

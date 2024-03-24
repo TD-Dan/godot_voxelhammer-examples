@@ -17,7 +17,7 @@ script = ExtResource("1_wjxha")
 
 [node name="Streamable" type="Node" parent="." groups=["all_streamables"]]
 script = ExtResource("2_4dmfy")
-stream_data_id = "custom_id_set_by_user"
+stream_data_id = "custom_id_set_by_scene"
 
 [node name="SomeRandomChild" type="CheckButton" parent="."]
 layout_mode = 1

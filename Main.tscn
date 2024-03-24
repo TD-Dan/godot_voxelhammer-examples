@@ -13,18 +13,20 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ru7lw"]
 
-[node name="World" type="Node3D"]
+[node name="Main" type="Node"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="World" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = ExtResource("1_543cc")
 camera_attributes = ExtResource("1_fk8i1")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(0.660146, -0.618191, 0.426669, -1.92256e-08, 0.568031, 0.823007, -0.751137, -0.543305, 0.374984, 5.85649, 6.37822, 4.34296)
 light_color = Color(1, 1, 0.972549, 1)
 shadow_enabled = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.222, 4.8, 9.4)
 light_color = Color(0.67451, 0.47451, 0, 1)
 light_energy = 0.0
@@ -32,19 +34,19 @@ light_size = 0.2
 shadow_enabled = true
 omni_range = 10.5734
 
-[node name="Camera3D" type="Camera3D" parent="." groups=["LookAtTarget", "player"]]
+[node name="Camera3D" type="Camera3D" parent="World" groups=["LookAtTarget", "player"]]
 transform = Transform3D(1, 0, 0, 0, 0.944227, 0.329295, 0, -0.329295, 0.944227, 0, 8.21203, 18.3496)
 environment = ExtResource("1_543cc")
 attributes = ExtResource("1_fk8i1")
 current = true
 script = ExtResource("3_mvgpr")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Camera3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="World/Camera3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Camera3D/CharacterBody3D"]
 shape = SubResource("SphereShape3D_ru7lw")
 
-[node name="TestWorldRoot" type="Node3D" parent="."]
+[node name="TestWorldRoot" type="Node3D" parent="World"]
 unique_name_in_owner = true
 
 [node name="UI" type="Control" parent="."]

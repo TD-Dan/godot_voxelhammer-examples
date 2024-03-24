@@ -33,41 +33,42 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="DatabaseStreamer" type="Node" parent="UI/HBoxContainer/VBoxContainer"]
+script = ExtResource("1_d6qeo")
+active_in_editor = true
+database_location = "user://database_streamer_test"
+database_uid = "001"
+database_name = "Test"
+database_format = "tscn"
+backup_strategy = 1
+
 [node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Default stream group, no backup
 "
 
-[node name="DatabaseStreamer" type="Node" parent="UI/HBoxContainer/VBoxContainer"]
-script = ExtResource("1_d6qeo")
-database_location = "user://database_streamer_test"
-database_uid = "001"
-database_name = "test"
-database_format = "tscn"
-backup_strategy = 1
-
 [node name="TextEdit" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Editing for editor 56"
+text = "Foo 1"
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
 
 [node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer/TextEdit" groups=["all_streamables"]]
 script = ExtResource("2_vm7oi")
-stream_data_id = "44935222988053"
+stream_data_id = "30432913602208"
 
 [node name="TextEdit2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Editing from game 5"
+text = "Ebin 2000"
 placeholder_text = "(Edit this text)"
 script = ExtResource("2_kanvg")
 
 [node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer/TextEdit2" groups=["all_streamables"]]
 script = ExtResource("2_vm7oi")
-stream_data_id = "44764917464595"
+stream_data_id = "30672190256818"
 
 [node name="SomeRandomChild" type="CheckBox" parent="UI/HBoxContainer/VBoxContainer/TextEdit2"]
 layout_mode = 1
@@ -84,102 +85,56 @@ grow_vertical = 2
 text = "check me"
 
 [node name="TextEdit3" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Gaussian Bill Blurr"
-placeholder_text = "(Edit this text)
-"
-script = ExtResource("2_kanvg")
+text = "foxtrot42"
 
-[node name="Streamable" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="5" groups=["all_streamables"]]
-script = ExtResource("2_vm7oi")
-stream_data_id = "first_custom_id"
-
-[node name="@Node@298948" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="6" groups=["all_streamables"]]
-script = ExtResource("2_vm7oi")
-stream_data_id = "first_custom_id"
-
-[node name="@Node@308490" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="7" groups=["all_streamables"]]
-script = ExtResource("2_vm7oi")
-stream_data_id = "first_custom_id"
-
-[node name="SomeRandomChild" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="8"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="@Node@333924" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="9" groups=["all_streamables"]]
-script = ExtResource("2_vm7oi")
-stream_data_id = "first_custom_id"
-
-[node name="@CheckButton@333925" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="10"]
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-text = "toggle me"
-
-[node name="@Node@350271" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="11" groups=["all_streamables"]]
-script = ExtResource("2_vm7oi")
-stream_data_id = "first_custom_id"
-
-[node name="@CheckButton@350272" parent="UI/HBoxContainer/VBoxContainer/TextEdit3" index="12"]
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-text = "toggle me"
-
-[node name="TextEdit4" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
-custom_minimum_size = Vector2(0, 50)
+[node name="TextEdit4" parent="UI/HBoxContainer/VBoxContainer" instance=ExtResource("4_vbfte")]
 layout_mode = 2
-text = "foxtrot12"
-placeholder_text = "(Edit this text)
-"
-script = ExtResource("2_kanvg")
+text = "boxfrot 33"
+
+[node name="Streamable" parent="UI/HBoxContainer/VBoxContainer/TextEdit4" index="5"]
+stream_data_id = "custom_id_set_by_user"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Custom stream group, interval
-"
 
 [node name="DatabaseStreamer2" type="Node" parent="UI/HBoxContainer/VBoxContainer2"]
 script = ExtResource("1_d6qeo")
 stream_group = "stream_2"
 database_location = "user://database_streamer_test"
 database_uid = "002"
-database_name = "test"
+database_name = "Test"
 database_format = "tscn"
-backup_strategy = 2
-backup_interval_seconds = 10.0
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Custom stream group, interval
+"
 
 [node name="TextEdit_2_1" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "foo"
+text = "foobar 5"
 placeholder_text = "(Edit this text)
 "
 script = ExtResource("2_kanvg")
 
 [node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" groups=["stream_2"]]
 script = ExtResource("2_vm7oi")
-stream_data_id = "53337571545281"
-
-[node name="Label2" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Custom stream group, instant"
+stream_data_id = "35392896192226"
 
 [node name="DatabaseStreamer3" type="Node" parent="UI/HBoxContainer/VBoxContainer2"]
 script = ExtResource("1_d6qeo")
 stream_group = "stream_3"
 database_location = "user://database_streamer_test"
 database_uid = "003"
-database_name = "test"
+database_name = "Test"
 database_format = "scn"
-backup_strategy = 4
-backup_interval_seconds = 10.0
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Custom stream group, instant"
 
 [node name="TextEdit_2_2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
@@ -191,13 +146,11 @@ script = ExtResource("2_kanvg")
 
 [node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" groups=["stream_3"]]
 script = ExtResource("2_vm7oi")
-stream_data_id = "53507424061550"
+stream_data_id = "35562631279926"
 
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/VBoxContainer/TextEdit" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit2" to="UI/HBoxContainer/VBoxContainer/TextEdit2" method="_on_text_changed"]
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit3" to="UI/HBoxContainer/VBoxContainer/TextEdit3" method="_on_text_changed"]
-[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer/TextEdit4" to="UI/HBoxContainer/VBoxContainer/TextEdit4" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" method="_on_text_changed"]
 [connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_text_changed"]
 
-[editable path="UI/HBoxContainer/VBoxContainer/TextEdit3"]
+[editable path="UI/HBoxContainer/VBoxContainer/TextEdit4"]
