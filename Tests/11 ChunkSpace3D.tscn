@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwusxchr54gqt"]
 
-[ext_resource type="Script" path="res://Tests/ChunkManagerTest.gd" id="1_rix22"]
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/ChunkSpace3D.gd" id="2_kluah"]
+[ext_resource type="Script" path="res://Tests/parts/ChunkManagerTest.gd" id="1_rix22"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="2_kluah"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
@@ -21,21 +21,12 @@ point_count = 5
 
 [node name="WORLD" type="Node3D" parent="."]
 
-[node name="MainTest" type="Node" parent="WORLD" node_paths=PackedStringArray("chunkmanager")]
+[node name="MainTest" type="Node" parent="WORLD" node_paths=PackedStringArray("chunk_space")]
 script = ExtResource("1_rix22")
-chunkmanager = NodePath("../ChunkSpace3D")
+chunk_space = NodePath("../ChunkSpace3D")
 
-[node name="ChunkSpace3D" type="Node" parent="WORLD"]
-unique_name_in_owner = true
+[node name="ChunkSpace3D" type="Node3D" parent="WORLD"]
 script = ExtResource("2_kluah")
-chunk_size = 128
-database_root_folder = "user://chunkdata"
-database_uid = "c411fa553a"
-database_name = "UnNamed"
-database_format = "scn"
-max_chunks = 100
-max_loaded = 80
-max_active = 64
 
 [node name="TestTarget" type="Node3D" parent="WORLD"]
 unique_name_in_owner = true
@@ -65,8 +56,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="WORLD/Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -204.635, 27.6107, -20.0915)
-progress = 895.429
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -131.414, 59.0628, -130.262)
+progress = 1097.35
 rotation_mode = 0
 tilt_enabled = false
 
@@ -86,8 +77,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="WORLD/Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -112.644, 56.0825, -129.565)
-progress = 2146.81
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 323.668, 118.767, 230.959)
+progress = 1260.42
 rotation_mode = 0
 tilt_enabled = false
 
@@ -130,5 +121,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "fetching ChunkServer status..."
+text = "ChunkSpace3D: 0 chunks 
+4 hotspots"
 autowrap_mode = 3
