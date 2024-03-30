@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn770bfs0wfcj"]
+
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain3D.gd" id="1_wlvqn"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_nok0e"]
+
+[node name="VoxelTerrainFPVTest" type="Node"]
+
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="VoxelTerrain3D" type="Node3D" parent="WORLD"]
+script = ExtResource("1_wlvqn")
+configuration = ExtResource("2_nok0e")
+largest_voxel = 4
+cascade_biggest_size = 128
+chunk_cascades = 3
+total_chunks = 24
+
+[node name="UI" type="VBoxContainer" parent="WORLD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="WORLD/UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Purpose of test:
+Confirm VoxelTerrain generation and display from 1st plaeyr view.
+Test:
+Should generate terrain around moving player camera."
+autowrap_mode = 3

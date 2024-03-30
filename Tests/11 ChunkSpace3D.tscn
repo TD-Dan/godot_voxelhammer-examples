@@ -64,8 +64,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="WORLD/Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 113.192, 43.0905, -119.669)
-progress = 110.34
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 249.859, 10.6522, -58.2666)
+progress = 267.867
 rotation_mode = 0
 tilt_enabled = false
 
@@ -85,8 +85,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="WORLD/Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 479.948, 299.651, 199.789)
-progress = 640.021
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -125.018, -28.6916, 63.2368)
+progress = 1796.83
 rotation_mode = 0
 tilt_enabled = false
 

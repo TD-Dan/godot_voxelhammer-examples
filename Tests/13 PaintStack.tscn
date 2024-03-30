@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://pstyooh3ckmq"]
+
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance.gd" id="1_2wbyv"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_23okr"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_712np"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpPlane.gd" id="4_3efbf"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpNoise.gd" id="5_sno7p"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/VoxelPaintStack.gd" id="6_0snug"]
+
+[sub_resource type="Resource" id="Resource_ytqxm"]
+resource_local_to_scene = true
+script = ExtResource("3_712np")
+size = Vector3i(8, 8, 8)
+data = PackedInt64Array(4, 2, 2, 2, 4, 4, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 2, 4, 4, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 2, 4, 4, 4, 4, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 4, 4, 4, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 2, 4, 4, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 2, 4, 4, 4, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_jdm4a"]
+script = ExtResource("4_3efbf")
+low = 0
+high = 1
+plane = 1
+paint_mode = 0
+blend_mode = 0
+blend_amount = 1.0
+material = 4
+active = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_piumm"]
+frequency = 0.1
+fractal_octaves = 3
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="Resource" id="Resource_1mw1y"]
+script = ExtResource("5_sno7p")
+noise = SubResource("FastNoiseLite_piumm")
+paint_mode = 0
+blend_mode = 0
+blend_amount = 0.75
+material = 2
+active = true
+
+[sub_resource type="Resource" id="Resource_ochxg"]
+script = ExtResource("6_0snug")
+use_global_coordinates = false
+clear_voxel_data = false
+clear_blend_buffer = false
+operation_stack = [SubResource("Resource_jdm4a"), SubResource("Resource_1mw1y")]
+
+[sub_resource type="Resource" id="Resource_08yn3"]
+resource_local_to_scene = true
+script = ExtResource("3_712np")
+size = Vector3i(8, 8, 8)
+data = PackedInt64Array(3, 2, 2, 2, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 2, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 2, 3, 3, 3, 3, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 3, 3, 3, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 2, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 2, 3, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_2j4km"]
+script = ExtResource("4_3efbf")
+low = 0
+high = 1
+plane = 1
+paint_mode = 0
+blend_mode = 0
+blend_amount = 1.0
+material = 3
+active = true
+
+[sub_resource type="Resource" id="Resource_rvrir"]
+script = ExtResource("5_sno7p")
+noise = SubResource("FastNoiseLite_piumm")
+paint_mode = 0
+blend_mode = 0
+blend_amount = 0.75
+material = 2
+active = true
+
+[sub_resource type="Resource" id="Resource_arqqq"]
+script = ExtResource("6_0snug")
+use_global_coordinates = false
+clear_voxel_data = false
+clear_blend_buffer = false
+operation_stack = [SubResource("Resource_2j4km"), SubResource("Resource_rvrir")]
+
+[node name="TestPaintStack" type="Node"]
+
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="VoxelInstance" type="Node3D" parent="WORLD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+script = ExtResource("1_2wbyv")
+configuration = ExtResource("2_23okr")
+voxel_data = SubResource("Resource_ytqxm")
+paint_stack = SubResource("Resource_ochxg")
+
+[node name="VoxelInstance2" type="Node3D" parent="WORLD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2, 0)
+script = ExtResource("1_2wbyv")
+configuration = ExtResource("2_23okr")
+voxel_data = SubResource("Resource_08yn3")
+paint_stack = SubResource("Resource_arqqq")
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Purpose of test:
+Visual confirmation that PaintStack is rendered properly on VoxelInstance.
+Test:
+Should display two identical nodes with same green voxels, with left showing white and right showing blue plane on bottom."
+autowrap_mode = 3
