@@ -4,3 +4,6 @@
 [submodule "addons/godot-free-look-camera"]
 	path = addons/godot-free-look-camera
 	url = git@github.com:TD-Dan/godot-free-look-camera.git
+[submodule "addons/godot-advanced-ui-controls"]
+	path = addons/godot-advanced-ui-controls
+	url = git@github.com:TD-Dan/godot-advanced-ui-controls.git

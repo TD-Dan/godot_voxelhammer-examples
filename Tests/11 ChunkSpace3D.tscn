@@ -1,0 +1,151 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwusxchr54gqt"]
+
+[ext_resource type="Script" path="res://Tests/parts/ChunkManagerTest.gd" id="1_rix22"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="2_kluah"]
+[ext_resource type="Script" path="res://addons/godot-advanced-ui-controls/Button/ButtonValueToggle.gd" id="3_aaal5"]
+
+[sub_resource type="Curve3D" id="Curve3D_yfdtq"]
+_data = {
+"points": PackedVector3Array(-161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506, -11.2489, 21.4879, -58.2553, 11.2489, -21.4879, 58.2553, 261.091, 0, -31.7924, 130.983, 0, -1.91216, -130.983, 0, 1.91216, 10.5205, -62.3026, 108.152, -3.65977, -28.2425, 64.7601, 3.65977, 28.2425, -64.7601, -226.193, 64.1519, -85.8018, -161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_xktrm"]
+_data = {
+"points": PackedVector3Array(-161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506, -11.2489, 21.4879, -58.2553, 11.2489, -21.4879, 58.2553, 605.729, 375.317, 349.71, 130.983, 0, -1.91216, -130.983, 0, 1.91216, 10.5205, -62.3026, 108.152, -3.65977, -28.2425, 64.7601, 3.65977, 28.2425, -64.7601, -226.193, 64.1519, -85.8018, -161.374, 0, 0.505188, 161.374, 0, -0.505188, 3.30385, 47.8306, -126.506),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w0ev"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0.45098)
+
+[node name="ChunkManagerTest" type="Node"]
+
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="MainTest" type="Node" parent="WORLD" node_paths=PackedStringArray("chunk_space")]
+unique_name_in_owner = true
+script = ExtResource("1_rix22")
+chunk_space = NodePath("../ChunkSpace3D")
+
+[node name="ChunkSpace3D" type="Node3D" parent="WORLD"]
+process_mode = 4
+script = ExtResource("2_kluah")
+chunk_size = Vector3i(32, 32, 32)
+
+[node name="TestTarget" type="Node3D" parent="WORLD"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -650.232, 310.132, 788.531)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="TestTarget2" type="Node3D" parent="WORLD"]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget2"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="Path3D" type="Path3D" parent="WORLD"]
+transform = Transform3D(1, 0, 0, 0, 0.938463, -0.34538, 0, 0.34538, 0.938463, 0, 38.5096, 0)
+curve = SubResource("Curve3D_yfdtq")
+
+[node name="MovingTarget" type="PathFollow3D" parent="WORLD/Path3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 113.192, 43.0905, -119.669)
+progress = 110.34
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="WORLD/Path3D/MovingTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/Path3D/MovingTarget/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="Path3D2" type="Path3D" parent="WORLD"]
+transform = Transform3D(-0.308436, -0.328541, -0.892708, 0, 0.938463, -0.34538, 0.951245, -0.106528, -0.289456, 0, 0.596607, 0)
+curve = SubResource("Curve3D_xktrm")
+
+[node name="MovingTarget2" type="PathFollow3D" parent="WORLD/Path3D2"]
+unique_name_in_owner = true
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 479.948, 299.651, 199.789)
+progress = 640.021
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="MovingTarget" type="Node3D" parent="WORLD/Path3D2/MovingTarget2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/Path3D2/MovingTarget2/MovingTarget"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 8, 0)
+radius = 4.0
+height = 16.0
+cone = true
+
+[node name="Measurement" type="Node3D" parent="WORLD"]
+
+[node name="BOX16" type="CSGBox3D" parent="WORLD/Measurement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 328)
+size = Vector3(16, 16, 16)
+material = SubResource("StandardMaterial3D_5w0ev")
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Purpose of test:
+Validate chunk server functionality in isolation.
+Test:
+Chunks should generate / load around TestTargets in both editor and in game."
+autowrap_mode = 3
+
+[node name="UpdateTimer" type="Timer" parent="UI"]
+autostart = true
+
+[node name="StatusLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ChunkSpace3D: 0 chunks 
+0 hotspots"
+autowrap_mode = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI"]
+layout_mode = 2
+
+[node name="ButtonValueToggle" type="Button" parent="UI/HFlowContainer"]
+layout_mode = 2
+text = "Show Debug Boxes"
+script = ExtResource("3_aaal5")
+custom_path = "%MainTest"
+bool_variable_name = "show_debug_boxes"

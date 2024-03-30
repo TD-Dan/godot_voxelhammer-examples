@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://pstyooh3ckmq"]
 
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance3D.gd" id="1_ecrn0"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance.gd" id="1_ecrn0"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_ie0lg"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_yhljf"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpPlane.gd" id="8_olb73"]
@@ -69,21 +69,19 @@ voxel_data = SubResource("Resource_bhis1")
 paint_stack = SubResource("Resource_ew5xw")
 metadata/_edit_group_ = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 0.9
+[node name="TESTUI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="TESTUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Purpose of test:
 Visual confirmation that PaintStack is rendered properly on VoxelInstance3D.
 Test:

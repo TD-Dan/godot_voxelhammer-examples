@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjxm6gts8yfa1"]
+
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelInstance.gd" id="1_s4gsk"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_ywbq4"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Resource/VoxelData.gd" id="3_4ttg5"]
+
+[sub_resource type="Resource" id="Resource_t1hwu"]
+script = ExtResource("3_4ttg5")
+size = Vector3i(4, 4, 4)
+data = PackedInt64Array(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
+
+[node name="SingleVoxelInstanceTest" type="Node"]
+
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="VoxelInstance" type="Node3D" parent="WORLD"]
+script = ExtResource("1_s4gsk")
+configuration = ExtResource("2_ywbq4")
+voxel_data = SubResource("Resource_t1hwu")
+metadata/_edit_group_ = true
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Purpose of test:
+Draw single simple VoxelInstance
+Test:
+Should show green 2 textured 4x4x4 voxel cubes"
+autowrap_mode = 3

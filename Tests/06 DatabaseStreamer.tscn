@@ -1,0 +1,210 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwo8qfbnydrvl"]
+
+[ext_resource type="Script" path="res://Tests/parts/database_streamer_test.gd" id="1_gi1rt"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Object/DatabaseStreamer.gd" id="2_5ydiu"]
+[ext_resource type="Script" path="res://Tests/parts/TextEditStreamable.gd" id="3_sxpyg"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Component/Streamable.gd" id="4_hyynp"]
+[ext_resource type="PackedScene" uid="uid://c4dbo2hedefux" path="res://Tests/parts/DatabaseStreamer_text_edit.tscn" id="5_xsm23"]
+
+[node name="DatabaseStreamerTest" type="Node"]
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_gi1rt")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Purpose of test:
+Validate DatabaseStreamer data persistence between sessions.
+Test:
+Data in nodes should be saved accross game sessions."
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DatabaseStreamer" type="Node" parent="UI/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+script = ExtResource("2_5ydiu")
+database_location = "user://database_streamer_test"
+database_uid = "001"
+database_name = "Test"
+database_format = "tscn"
+backup_strategy = 1
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Default stream group, no backup, autosave at exit"
+
+[node name="TextEdit" type="TextEdit" parent="UI/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "(Edit this text)"
+script = ExtResource("3_sxpyg")
+
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit" groups=["all_streamables"]]
+script = ExtResource("4_hyynp")
+stream_data_id = "7499449181669"
+
+[node name="TextEdit2" type="TextEdit" parent="UI/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "(Edit this text)"
+script = ExtResource("3_sxpyg")
+
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2" groups=["all_streamables"]]
+script = ExtResource("4_hyynp")
+stream_data_id = "7342481548805"
+
+[node name="SomeRandomChild" type="CheckButton" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "toggle me"
+
+[node name="TextEdit3" parent="UI/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_xsm23")]
+layout_mode = 2
+text = ""
+
+[node name="TextEdit4" parent="UI/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_xsm23")]
+layout_mode = 2
+text = ""
+
+[node name="Streamable" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit4" index="5"]
+stream_data_id = "custom_id_set_by_user"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="UI/HBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DatabaseStreamer2" type="Node" parent="UI/HBoxContainer/VBoxContainer2"]
+script = ExtResource("2_5ydiu")
+stream_group = "stream_2"
+database_location = "user://database_streamer_test"
+database_uid = "002"
+database_name = "Test"
+database_format = "tscn"
+backup_strategy = 2
+backup_interval_seconds = 10.0
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Custom stream group, interval"
+
+[node name="TextEdit_2_1" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Edit me, I stream to file in 10 second intervals"
+placeholder_text = "(Edit this text)
+"
+script = ExtResource("3_sxpyg")
+
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" groups=["stream_2"]]
+script = ExtResource("4_hyynp")
+stream_data_id = "35392896192226"
+
+[node name="DatabaseStreamer3" type="Node" parent="UI/HBoxContainer/VBoxContainer2"]
+script = ExtResource("2_5ydiu")
+stream_group = "stream_3"
+database_location = "user://database_streamer_test"
+database_uid = "003"
+database_name = "Test"
+database_format = "tscn"
+backup_strategy = 4
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Custom stream group, instant"
+
+[node name="TextEdit_2_2" type="TextEdit" parent="UI/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Edit me, I stream instantly to file"
+placeholder_text = "(Edit this text)
+"
+wrap_mode = 1
+script = ExtResource("3_sxpyg")
+
+[node name="Streamable" type="Node" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" groups=["stream_3"]]
+script = ExtResource("4_hyynp")
+stream_data_id = "35562631279926"
+
+[node name="OptionButton" type="OptionButton" parent="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "A"
+popup/item_0/id = 0
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[connection signal="text_changed" from="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit" to="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2" to="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2" method="_on_data_changed"]
+[connection signal="toggled" from="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2/SomeRandomChild" to="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit2" method="_on_data_changed" unbinds=1]
+[connection signal="pressed" from="UI/HBoxContainer/MarginContainer/VBoxContainer/HFlowContainer/SaveButton" to="UI" method="_on_save_button_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/MarginContainer/VBoxContainer/HFlowContainer/LoadButton" to="UI" method="_on_load_button_pressed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_1" method="_on_data_changed"]
+[connection signal="text_changed" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed"]
+[connection signal="item_selected" from="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2/OptionButton" to="UI/HBoxContainer/VBoxContainer2/TextEdit_2_2" method="_on_data_changed" unbinds=1]
+
+[editable path="UI/HBoxContainer/MarginContainer/VBoxContainer/TextEdit4"]
