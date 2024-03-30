@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn770bfs0wfcj"]
 
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain3D.gd" id="1_wlvqn"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_wlvqn"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_nok0e"]
 
 [node name="VoxelTerrainFPVTest" type="Node"]
@@ -29,7 +29,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Purpose of test:
-Confirm VoxelTerrain generation and display from 1st plaeyr view.
+Confirm VoxelTerrain streaming and editing from 1st player view.
 Test:
-Should generate terrain around moving player camera."
+Should generate terrain around moving player camera. Should save terrain changes between sessions."
 autowrap_mode = 3

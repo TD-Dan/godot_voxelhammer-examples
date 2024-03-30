@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch0hyf2y1fc45"]
 
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain3D.gd" id="1_q15tl"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_q15tl"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_7plsy"]
 [ext_resource type="Resource" uid="uid://b1soikmlwutjf" path="res://Tests/parts/global_test_paintstack.tres" id="3_ifexp"]
 
@@ -8,7 +8,7 @@
 
 [node name="WORLD" type="Node3D" parent="."]
 
-[node name="VoxelTerrain3D" type="Node3D" parent="WORLD"]
+[node name="VoxelTerrain" type="Node3D" parent="WORLD"]
 script = ExtResource("1_q15tl")
 configuration = ExtResource("2_7plsy")
 paint_stack = ExtResource("3_ifexp")
