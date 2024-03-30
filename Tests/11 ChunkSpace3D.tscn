@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwusxchr54gqt"]
+[gd_scene load_steps=7 format=3 uid="uid://cwusxchr54gqt"]
 
 [ext_resource type="Script" path="res://Tests/parts/ChunkManagerTest.gd" id="1_rix22"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="2_kluah"]
+[ext_resource type="Script" path="res://addons/godot-advanced-ui-controls/Button/ButtonValueToggle.gd" id="3_aaal5"]
 
 [sub_resource type="Curve3D" id="Curve3D_yfdtq"]
 _data = {
@@ -27,6 +28,7 @@ albedo_color = Color(1, 1, 1, 0.45098)
 [node name="WORLD" type="Node3D" parent="."]
 
 [node name="MainTest" type="Node" parent="WORLD" node_paths=PackedStringArray("chunk_space")]
+unique_name_in_owner = true
 script = ExtResource("1_rix22")
 chunk_space = NodePath("../ChunkSpace3D")
 
@@ -62,8 +64,8 @@ curve = SubResource("Curve3D_yfdtq")
 
 [node name="MovingTarget" type="PathFollow3D" parent="WORLD/Path3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -225.912, 59.4446, -75.6819)
-progress = 963.341
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 113.192, 43.0905, -119.669)
+progress = 110.34
 rotation_mode = 0
 tilt_enabled = false
 
@@ -83,8 +85,8 @@ curve = SubResource("Curve3D_xktrm")
 
 [node name="MovingTarget2" type="PathFollow3D" parent="WORLD/Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 161.353, 100.705, -62.1319)
-progress = 181.422
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 479.948, 299.651, 199.789)
+progress = 640.021
 rotation_mode = 0
 tilt_enabled = false
 
@@ -140,3 +142,10 @@ autowrap_mode = 3
 
 [node name="HFlowContainer" type="HFlowContainer" parent="UI"]
 layout_mode = 2
+
+[node name="ButtonValueToggle" type="Button" parent="UI/HFlowContainer"]
+layout_mode = 2
+text = "Show Debug Boxes"
+script = ExtResource("3_aaal5")
+custom_path = "%MainTest"
+bool_variable_name = "show_debug_boxes"
