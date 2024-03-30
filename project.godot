@@ -21,4 +21,4 @@ VoxelHammer="*res://addons/godot-voxelhammer/VoxelHammer.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-voxelhammer/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-advanced-ui-controls/plugin.cfg", "res://addons/godot-voxelhammer/plugin.cfg")
