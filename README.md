@@ -78,7 +78,8 @@ passing 1/1
 
 
 ### 09 Multiple duplicates
-passing 1/1
+not implemented
+passing 0/1
 
 
 ### 10 VoxelScaling
@@ -91,22 +92,41 @@ passing 0/1
 passing 1/1
 
 
-### PaintStack
-
-![image](https://user-images.githubusercontent.com/37656679/236412896-96a90f7e-4ec6-4db9-9044-3d624c73f6a9.png)
-
-:heavy_check_mark: Apply paint stack in local coordinates
-
-passing 1 / 1
-
-
-### Editor Instantiation
-
+### 12 Editor Instantiation
 :heavy_check_mark: VoxelInstance3D by Add Child Node (Ctrl-A)<br>
-- [ ] VoxelInstance3D by VoxelHammer plugin Dock<br>
-- [ ] VoxelBody3D by Add Child Node (Ctrl-A)<br>
-- [ ] VoxelBody3D by VoxelHammer plugin Dock
-passing 1 / 4
+- [ ] VoxelInstance3D by VoxelHammer plugin Dock NOT TESTED<br>
+- [ ] VoxelBody3D by Add Child Node (Ctrl-A) NOT TESTED<br>
+- [ ] VoxelBody3D by VoxelHammer plugin Dock NOT TESTED<br>
+passing 1/4
+
+
+### 13 PaintStack
+:heavy_check_mark: Apply paint stack in local coordinates
+passing 1/1
+
+
+### 14 PaintStack Global
+:heavy_check_mark: Apply paint stack in global coordinates
+passing 1/1
+
+
+### 15 VoxelTerrain
+:heavy_check_mark: Generate terrain chunks around test targets. SLOW. Needs WorkerThreadPool to not choke CPU with too many threads.
+passing 1/1
+
+
+### 16 VoxelTerrain Collisions
+:heavy_check_mark: Spheres collide with voxel terrain
+passing 1/1
+
+
+### 17 VoxelTerrain FPV
+-[ ] Chunks generate around moving player (ChunkSpace3D)
+-[ ] Terrain persists between sessions (DatabaseStreamer)
+-[ ] Terrain is editable (PaintableVoxels component)
+passing 0/3
+
+
 
 possible features to add:
 - [ ] Undo functionality -> https://github.com/TD-Dan/godot-voxelhammer/issues/10
