@@ -1,26 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch0hyf2y1fc45"]
+[gd_scene load_steps=5 format=3 uid="uid://ch0hyf2y1fc45"]
 
-[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain3D.gd" id="1_q15tl"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_q15tl"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_7plsy"]
 [ext_resource type="Resource" uid="uid://b1soikmlwutjf" path="res://Tests/parts/global_test_paintstack.tres" id="3_ifexp"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="4_qd0vl"]
 
 [node name="VoxelTerrainTest" type="Node"]
 
 [node name="WORLD" type="Node3D" parent="."]
 
-[node name="VoxelTerrain3D" type="Node3D" parent="WORLD"]
+[node name="VoxelTerrain" type="Node3D" parent="WORLD"]
 script = ExtResource("1_q15tl")
 configuration = ExtResource("2_7plsy")
 paint_stack = ExtResource("3_ifexp")
-tracking_target = NodePath("../TestTarget")
-chunk_size = 16
-largest_voxel = 1
-cascade_biggest_size = 16
-cascade_smallest_size = 16
-chunk_cascades = 1
+
+[node name="ChunkSpace3D" type="Node3D" parent="WORLD/VoxelTerrain" node_paths=PackedStringArray("hotspots")]
+script = ExtResource("4_qd0vl")
+hotspots = [NodePath("../../TestTarget"), NodePath("../../TestTarget2")]
 
 [node name="TestTarget" type="Node3D" parent="WORLD"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14844, 14.1616, -1.056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4886, 1.54475, -32.4435)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget"]
@@ -28,7 +27,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 
 cone = true
 
 [node name="TestTarget2" type="Node3D" parent="WORLD"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3312, 14.1616, -209.056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3312, 14.1616, -129.083)
 metadata/_edit_group_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/TestTarget2"]

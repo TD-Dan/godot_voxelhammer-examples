@@ -53,7 +53,7 @@ func _process(delta):
 
 func get_status_text():
 	return "ChunkSpace3D: %s chunks \n%s hotspots" % \
-		[chunk_space.chunks_by_position.size(), chunk_space._hotspots.size()]
+		[chunk_space.chunks_by_position.size(), chunk_space.hotspots.size()]
 
 
 func _on_chunk_added(chunk : Chunk3D):
