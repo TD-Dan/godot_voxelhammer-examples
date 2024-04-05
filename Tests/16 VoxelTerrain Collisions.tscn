@@ -248,9 +248,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Purpose of test:
-Test That VoxelTerrain is generating corectly around test targets
+Test That VoxelTerrain is colliding with native godot collision shapes
 Test:
-Should display terrain around test targets"
+Should display white spheres rolling on green terrain with white bottom layer."
 autowrap_mode = 3
 
 [node name="StartTestButton" type="Button" parent="UI"]
