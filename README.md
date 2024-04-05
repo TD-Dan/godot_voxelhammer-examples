@@ -2,7 +2,7 @@
 
 <img src="https://badgen.net/badge/Godot/v%204.2.1/blue?icon=https://godotengine.org/themes/godotengine/assets/press/icon_monochrome_dark.svg"> <img src="https://badgen.net/badge/license/MIT/blue"> 
 <br>
-<img src="https://badgen.net/badge/Tests Passing/10 of 16/orange">
+<img src="https://badgen.net/badge/Tests Passing/13 of 17/orange">
 
 Example and test project of [godot-voxelhammer](https://github.com/TD-Dan/godot-voxelhammer)
 
@@ -18,18 +18,15 @@ Shows dynamic creation of geometry with a VoxelPaintStack.
 ## Tests
 
 ### 01 VoxelInstance
-
+passing 1/1
 
 
 ### 02 Multiple VoxelInstances
-
-passing 1 / 1
+passing 1/1
 
 
 ### 03 Live Instances
-
 ![image](https://user-images.githubusercontent.com/37656679/235439473-424265e2-1125-42bd-a40e-a77f718ef722.png)
-
 :heavy_check_mark: No frame jitter<br>
 #### meshing modes:
 :heavy_check_mark: Cubes<br>
@@ -42,9 +39,7 @@ passing 4 / 6
 
 
 ### 04 Meshing
-
 ![image](https://user-images.githubusercontent.com/37656679/236410839-4b8cd054-2900-4f8b-bd4c-9a497dcaf3c5.png)
-
 :heavy_check_mark: single material<br>
 :heavy_check_mark: multiple materials<br>
 :heavy_check_mark: erroneus materials -> negative indices should display error material<br>
