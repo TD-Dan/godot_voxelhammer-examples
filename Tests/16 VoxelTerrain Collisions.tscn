@@ -1,0 +1,263 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctntp3b2uak2q"]
+
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_733wy"]
+[ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_kur7v"]
+[ext_resource type="Resource" uid="uid://b2553uo8n15m8" path="res://Tests/parts/collision_test_paintstack.tres" id="3_5txc5"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="4_wjp18"]
+[ext_resource type="Script" path="res://Tests/parts/voxel_terrain_collisions_test.gd" id="5_4755g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7wb5h"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pl8ge"]
+radius = 2.0
+
+[node name="VoxelTerrainTest" type="Node"]
+
+[node name="WORLD" type="Node3D" parent="."]
+
+[node name="Interactive" type="Node3D" parent="WORLD"]
+unique_name_in_owner = true
+process_mode = 4
+
+[node name="Sphere" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.379, 0.199142, 7.94926)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere2" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.379, 0.199142, 30.4266)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere2"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere2"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere3" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3219, 0.199142, 7.94926)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere3"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere3"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere4" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3219, 0.199142, 30.4266)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere4"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere4"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere5" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.379, 0.199142, -40.4797)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere5"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere5"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere6" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.379, 0.199142, -18.0024)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere6"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere6"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere7" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3219, 0.199142, -40.4797)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere7"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere7"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere8" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3219, 0.199142, -18.0024)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere8"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere8"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere9" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.405, 0.199142, 7.94926)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere9"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere9"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere10" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.405, 0.199142, 30.4266)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere10"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere10"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere11" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4621, 0.199142, 7.94926)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere11"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere11"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere12" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4621, 0.199142, 30.4266)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere12"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere12"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere13" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.405, 0.199142, -40.4797)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere13"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere13"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere14" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.405, 0.199142, -18.0024)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere14"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere14"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere15" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4621, 0.199142, -40.4797)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere15"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere15"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="Sphere16" type="RigidBody3D" parent="WORLD/Interactive"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4621, 0.199142, -18.0024)
+mass = 10.0
+metadata/_edit_group_ = true
+
+[node name="SphereMesh" type="MeshInstance3D" parent="WORLD/Interactive/Sphere16"]
+gi_mode = 2
+mesh = SubResource("SphereMesh_7wb5h")
+
+[node name="SphereShape" type="CollisionShape3D" parent="WORLD/Interactive/Sphere16"]
+shape = SubResource("SphereShape3D_pl8ge")
+
+[node name="VoxelTerrain" type="Node3D" parent="WORLD"]
+script = ExtResource("1_733wy")
+configuration = ExtResource("2_kur7v")
+paint_stack = ExtResource("3_5txc5")
+enable_collisions = true
+
+[node name="ChunkSpace3D" type="Node3D" parent="WORLD/VoxelTerrain" node_paths=PackedStringArray("hotspots")]
+script = ExtResource("4_wjp18")
+chunk_size = Vector3i(32, 32, 32)
+active_area = Vector3i(4, 1, 4)
+hotspots = [NodePath("../../Origo")]
+
+[node name="Origo" type="Node3D" parent="WORLD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18626, 0)
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WORLD/Origo"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
+cone = true
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("5_4755g")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Purpose of test:
+Test That VoxelTerrain is generating corectly around test targets
+Test:
+Should display terrain around test targets"
+autowrap_mode = 3
+
+[node name="StartTestButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Start test"
+
+[connection signal="pressed" from="UI/StartTestButton" to="UI" method="_on_start_test_button_pressed"]

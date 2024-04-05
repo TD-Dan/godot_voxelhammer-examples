@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="VoxelPaintStack" load_steps=9 format=3 uid="uid://b2553uo8n15m8"]
+
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpNoise.gd" id="1_boo5k"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpGradient.gd" id="2_t350n"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/PaintOpPlane.gd" id="3_fub5x"]
+[ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/PaintOp/VoxelPaintStack.gd" id="4_lqt35"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5nj68"]
+seed = 2
+fractal_octaves = 3
+
+[sub_resource type="Resource" id="Resource_yabuf"]
+script = ExtResource("1_boo5k")
+noise = SubResource("FastNoiseLite_5nj68")
+paint_mode = 4
+blend_mode = 0
+blend_amount = 0.9
+material = 2
+active = true
+
+[sub_resource type="Resource" id="Resource_i8w08"]
+script = ExtResource("2_t350n")
+offset = 0
+distance = 42
+mirror = false
+reverse = false
+plane = 1
+paint_mode = 0
+blend_mode = 4
+blend_amount = 2.0
+material = 2
+active = true
+
+[sub_resource type="Resource" id="Resource_64unf"]
+script = ExtResource("3_fub5x")
+low = -32
+high = -31
+plane = 1
+paint_mode = 2
+blend_mode = 0
+blend_amount = 1.0
+material = 3
+active = true
+
+[resource]
+script = ExtResource("4_lqt35")
+use_global_coordinates = true
+clear_voxel_data = true
+clear_blend_buffer = false
+operation_stack = [SubResource("Resource_yabuf"), SubResource("Resource_i8w08"), SubResource("Resource_64unf")]
+notify_stack_changed = null
