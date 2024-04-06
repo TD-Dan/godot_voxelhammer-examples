@@ -116,10 +116,10 @@ passing 1/1
 
 
 ### 17 VoxelTerrain FPV
--[ ] Chunks generate around moving player (ChunkSpace3D)
+:heavy_check_mark: Chunks generate around moving player (ChunkSpace3D)
 -[ ] Terrain persists between sessions (DatabaseStreamer)
 -[ ] Terrain is editable (PaintableVoxels component)
-passing 0/3
+passing 1/3
 
 
 
