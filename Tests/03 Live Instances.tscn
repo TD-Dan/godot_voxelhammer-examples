@@ -86,7 +86,7 @@ size_flags_vertical = 0
 text = "Purpose of test:
 Constant live updating of VoxelData should result in generating meshes as fast as possible
 Test:
-Update VoxelData once per frame with sphere whose size changes with time. Mesh should be always visible and refreshing as fast as possible. Validate with different size VoxelInstances to generate meshes that will be too slow to update live."
+Update VoxelData once per frame with sphere whose size changes with time. Mesh should be always visible and refreshing as fast as possible. Validate with different size (6,8,16,32,64) VoxelInstances to generate meshes that will be too slow to update live."
 autowrap_mode = 3
 
 [node name="PerformanceLabel" type="Label" parent="UI"]

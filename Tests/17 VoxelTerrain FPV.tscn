@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Tests/parts/VoxelTerrainFPV_MainScript.gd" id="1_jvhri"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_wlvqn"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_nok0e"]
-[ext_resource type="Resource" uid="uid://b1soikmlwutjf" path="res://Tests/parts/global_test_paintstack.tres" id="4_7xu7v"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="4_niofb"]
+[ext_resource type="Resource" uid="uid://brys71ue43x00" path="res://Tests/parts/fpv_test_paintstack.tres" id="4_t32v5"]
 
 [node name="VoxelTerrainFPVTest" type="Node"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_jvhri")
 unique_name_in_owner = true
 script = ExtResource("1_wlvqn")
 configuration = ExtResource("2_nok0e")
-paint_stack = ExtResource("4_7xu7v")
+paint_stack = ExtResource("4_t32v5")
 
 [node name="ChunkSpace3D" type="Node3D" parent="WORLD/VoxelTerrain3D"]
 process_mode = 4

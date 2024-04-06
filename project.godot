@@ -22,3 +22,13 @@ VoxelHammer="*res://addons/godot-voxelhammer/VoxelHammer.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-advanced-ui-controls/plugin.cfg", "res://addons/godot-voxelhammer/plugin.cfg")
+
+[threading]
+
+worker_pool/use_system_threads_for_low_priority_tasks=false
+
+[voxelhammer]
+
+plugin_directory="res://addons/godot-voxelhammer/"
+default_configuration_path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres"
+show_debug_gizmos=false
