@@ -2,3 +2,7 @@
 
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_focus_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+OptionButton/colors/font_hover_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.0901961, 0.0901961, 0.0901961, 1)

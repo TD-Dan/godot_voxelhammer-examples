@@ -13,11 +13,11 @@ var performance_voxels = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	n1.connect("data_changed", _on_mesh_updated.bind(1))
-	n2.connect("data_changed", _on_mesh_updated.bind(2))
-	n3.connect("data_changed", _on_mesh_updated.bind(3))
-	n4.connect("data_changed", _on_mesh_updated.bind(4))
-	n5.connect("data_changed", _on_mesh_updated.bind(5))
+	n1.connect("data_changed", _on_voxel_data_changed.bind(1))
+	n2.connect("data_changed", _on_voxel_data_changed.bind(2))
+	n3.connect("data_changed", _on_voxel_data_changed.bind(3))
+	n4.connect("data_changed", _on_voxel_data_changed.bind(4))
+	n5.connect("data_changed", _on_voxel_data_changed.bind(5))
 	
 	performance_mesh_update_counter.resize(5)
 	performance_mesh_update_counter.fill(0)
@@ -47,7 +47,8 @@ func _process(delta):
 		n5.push_voxel_operation(VoxelOpSphere.new(2,Vector3(n5.voxel_data.size)/2.0+Vector3(0.1,0.2,0.3), n5.voxel_data.size.x/2*phase, true))
 
 
-func _on_mesh_updated(what,who):
+func _on_voxel_data_changed(what,who):
+	#print("on_data_changed")
 	if what == "mesh":
 		performance_mesh_update_counter[who-1] += 1
 

@@ -34,7 +34,7 @@ light_size = 0.2
 shadow_enabled = true
 omni_range = 10.5734
 
-[node name="Camera3D" type="Camera3D" parent="World" groups=["LookAtTarget", "player"]]
+[node name="Camera3D" type="Camera3D" parent="World" groups=["LookAtTarget", "PlayerCamera", "player"]]
 transform = Transform3D(1, 0, 0, 0, 0.944227, 0.329295, 0, -0.329295, 0.944227, 0, 8.21203, 18.3496)
 environment = ExtResource("1_543cc")
 attributes = ExtResource("1_fk8i1")

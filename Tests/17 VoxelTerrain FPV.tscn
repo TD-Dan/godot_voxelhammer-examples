@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn770bfs0wfcj"]
+[gd_scene load_steps=6 format=3 uid="uid://bn770bfs0wfcj"]
 
 [ext_resource type="Script" path="res://Tests/parts/VoxelTerrainFPV_MainScript.gd" id="1_jvhri"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/VoxelTerrain.gd" id="1_wlvqn"]
 [ext_resource type="Resource" uid="uid://bvhuwmnl8rsp7" path="res://addons/godot-voxelhammer/res/default_voxel_configuration.tres" id="2_nok0e"]
 [ext_resource type="Script" path="res://addons/godot-voxelhammer/classes/Node3D/ChunkSpace3D.gd" id="4_niofb"]
+[ext_resource type="Resource" uid="uid://brys71ue43x00" path="res://Tests/parts/fpv_test_paintstack.tres" id="4_t32v5"]
 
 [node name="VoxelTerrainFPVTest" type="Node"]
 
@@ -13,15 +14,17 @@
 script = ExtResource("1_jvhri")
 
 [node name="VoxelTerrain3D" type="Node3D" parent="WORLD"]
+unique_name_in_owner = true
 script = ExtResource("1_wlvqn")
 configuration = ExtResource("2_nok0e")
+paint_stack = ExtResource("4_t32v5")
 
 [node name="ChunkSpace3D" type="Node3D" parent="WORLD/VoxelTerrain3D"]
 process_mode = 4
 script = ExtResource("4_niofb")
-tracked_hotspots = "[]"
+chunk_size = Vector3i(32, 32, 32)
 
-[node name="UI" type="VBoxContainer" parent="WORLD"]
+[node name="UI" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,7 +33,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="WORLD/UI"]
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
