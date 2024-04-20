@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 VoxelHammer="*res://addons/godot-voxelhammer/VoxelHammer.gd"
+TaskServer="*res://addons/godot_task_server/TaskServer.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-advanced-ui-controls/plugin.cfg", "res://addons/godot-voxelhammer/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-advanced-ui-controls/plugin.cfg", "res://addons/godot-voxelhammer/plugin.cfg", "res://addons/godot_task_server/plugin.cfg")
 
 [threading]
 

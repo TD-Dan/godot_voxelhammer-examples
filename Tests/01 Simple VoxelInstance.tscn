@@ -17,7 +17,6 @@ data = PackedInt64Array(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
 script = ExtResource("1_s4gsk")
 configuration = ExtResource("2_ywbq4")
 voxel_data = SubResource("Resource_t1hwu")
-metadata/_edit_group_ = true
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchors_preset = 15
