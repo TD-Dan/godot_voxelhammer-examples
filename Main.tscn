@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dptcr6gmkv0dh"]
+[gd_scene load_steps=14 format=3 uid="uid://dptcr6gmkv0dh"]
 
 [ext_resource type="Environment" uid="uid://b2lup6wok25x8" path="res://res/MainEnvironment.tres" id="1_543cc"]
 [ext_resource type="CameraAttributesPhysical" uid="uid://bplg8oft2irm" path="res://res/CameraAttributesPhysical.tres" id="1_fk8i1"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://addons/godot-free-look-camera/free_look_camera.gd" id="3_mvgpr"]
 [ext_resource type="Script" path="res://ui/VSyncButton.gd" id="4_prman"]
 [ext_resource type="Theme" uid="uid://sgnyfpl55byd" path="res://res/UI_theme.tres" id="4_xxumw"]
+[ext_resource type="PackedScene" uid="uid://datrhxrev4u75" path="res://addons/godot_task_server/TaskServerDock.tscn" id="5_gaocl"]
 [ext_resource type="Texture2D" uid="uid://dnpesvmv0c2ag" path="res://addons/godot-voxelhammer/res/icon_vh.png" id="5_rvvcp"]
 [ext_resource type="Script" path="res://addons/godot-advanced-ui-controls/Button/OptionButtonValueSelect.gd" id="6_jq2oo"]
 [ext_resource type="Script" path="res://addons/godot-advanced-ui-controls/Button/ButtonValueToggle.gd" id="6_p1r1t"]
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="8_7cn4w"]
+[ext_resource type="Texture2D" uid="uid://c5chsyqe62a0p" path="res://addons/godot_task_server/icon_ts.png" id="11_ixvlo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ru7lw"]
 
@@ -76,6 +78,14 @@ layout_mode = 2
 split_offset = 250
 
 [node name="MenuHBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/MainSplit"]
+layout_mode = 2
+
+[node name="TaskServerContainer" type="VBoxContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="TaskServer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/TaskServerContainer" instance=ExtResource("5_gaocl")]
 layout_mode = 2
 
 [node name="SettingsContainer" type="HFlowContainer" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer"]
@@ -156,6 +166,15 @@ text = "Settings"
 icon = ExtResource("5_rvvcp")
 script = ExtResource("6_p1r1t")
 target_node = NodePath("../../../SettingsContainer")
+bool_variable_name = "visible"
+
+[node name="TaskServer" type="Button" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer/MainContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "TaskServer"
+icon = ExtResource("11_ixvlo")
+script = ExtResource("6_p1r1t")
+target_node = NodePath("../../../TaskServerContainer")
 bool_variable_name = "visible"
 
 [node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/MainSplit/MenuHBoxContainer/VBoxContainer"]
